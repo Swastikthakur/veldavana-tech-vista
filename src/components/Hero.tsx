@@ -44,11 +44,11 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* Floating Icons */}
+      {/* Floating Icons - Hidden on mobile */}
       {floatingElements.map((element, index) => (
         <motion.div
           key={index}
-          className="absolute text-brand-secondary/20"
+          className="absolute text-brand-secondary/20 hidden lg:block"
           style={{
             left: `calc(50% + ${element.x}px)`,
             top: `calc(50% + ${element.y}px)`,
@@ -72,27 +72,28 @@ const Hero = () => {
       ))}
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
           <motion.h1 
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-brand-secondary mb-6 leading-tight"
+            className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-brand-secondary mb-4 sm:mb-6 leading-tight px-2"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             Transforming Ideas Into
-            <br />
+            <br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>
             <span className="bg-gradient-to-r from-brand-secondary to-brand-secondary/80 bg-clip-text text-transparent">
               Digital Reality
             </span>
           </motion.h1>
           
           <motion.p 
-            className="text-xl md:text-2xl text-brand-secondary/90 mb-8 max-w-3xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-brand-secondary/90 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed px-2"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -102,22 +103,22 @@ const Hero = () => {
           </motion.p>
           
           <motion.div 
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <Button 
               size="lg" 
-              className="bg-brand-secondary text-brand-primary hover:bg-brand-secondary/90 font-semibold px-8 py-4 text-lg rounded-lg transition-all duration-300 hover:shadow-xl hover:scale-105 group"
+              className="w-full sm:w-auto bg-brand-secondary text-brand-primary hover:bg-brand-secondary/90 font-semibold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-lg transition-all duration-300 hover:shadow-xl hover:scale-105 group"
             >
               Start Your Project
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-brand-primary font-semibold px-8 py-4 text-lg rounded-lg transition-all duration-300 hover:shadow-xl"
+              className="w-full sm:w-auto border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-brand-primary font-semibold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-lg transition-all duration-300 hover:shadow-xl"
             >
               View Our Work
             </Button>
@@ -126,7 +127,7 @@ const Hero = () => {
         
         {/* Stats */}
         <motion.div 
-          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
+          className="mt-12 sm:mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 max-w-4xl mx-auto px-4"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
@@ -144,10 +145,10 @@ const Hero = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
             >
-              <div className="text-3xl md:text-4xl font-bold text-brand-secondary mb-2">
+              <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-brand-secondary mb-1 sm:mb-2">
                 {stat.number}
               </div>
-              <div className="text-brand-secondary/80 text-sm md:text-base">
+              <div className="text-brand-secondary/80 text-xs sm:text-sm md:text-base leading-tight">
                 {stat.label}
               </div>
             </motion.div>
@@ -157,7 +158,7 @@ const Hero = () => {
       
       {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 hidden sm:block"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.2 }}

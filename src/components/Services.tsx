@@ -46,21 +46,21 @@ const Services = () => {
     <section id="services" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16 px-4"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6">
             Our Services
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             We offer comprehensive technology solutions designed to accelerate your digital transformation journey.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -99,21 +99,21 @@ const Services = () => {
 
         {/* Call to Action */}
         <motion.div
-          className="text-center mt-16"
+          className="text-center mt-12 sm:mt-16 px-4"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-bold text-foreground mb-4">
+          <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-4">
             Ready to Transform Your Business?
           </h3>
-          <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto">
             Let's discuss how our expertise can help you achieve your digital goals. 
             Contact us today for a free consultation.
           </p>
           <motion.button
-            className="bg-brand-primary text-brand-secondary px-8 py-3 rounded-lg font-semibold hover:bg-brand-accent transition-colors duration-300 hover:shadow-lg"
+            className="bg-brand-primary text-brand-secondary px-6 sm:px-8 py-3 rounded-lg font-semibold hover:bg-brand-accent transition-colors duration-300 hover:shadow-lg text-sm sm:text-base"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

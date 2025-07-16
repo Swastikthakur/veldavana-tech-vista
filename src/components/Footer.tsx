@@ -64,32 +64,32 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         {/* Newsletter Section */}
         <motion.div
-          className="py-12 border-b border-brand-secondary/20"
+          className="py-8 sm:py-12 border-b border-brand-secondary/20"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="max-w-4xl mx-auto text-center">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">
+          <div className="max-w-4xl mx-auto text-center px-4">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4">
               Stay Updated with Our Latest Insights
             </h3>
-            <p className="text-brand-secondary/80 mb-8 text-lg">
+            <p className="text-brand-secondary/80 mb-6 sm:mb-8 text-sm sm:text-base md:text-lg">
               Subscribe to our newsletter for the latest tech trends, project updates, and industry insights.
             </p>
-            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-md mx-auto">
               <Input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
                 required
-                className="flex-1 bg-brand-secondary/10 border-brand-secondary/30 text-brand-secondary placeholder-brand-secondary/60"
+                className="flex-1 bg-brand-secondary/10 border-brand-secondary/30 text-brand-secondary placeholder-brand-secondary/60 text-sm sm:text-base"
               />
               <Button
                 type="submit"
                 disabled={isSubscribing}
-                className="bg-brand-secondary text-brand-primary hover:bg-brand-secondary/90 font-semibold"
+                className="bg-brand-secondary text-brand-primary hover:bg-brand-secondary/90 font-semibold text-sm sm:text-base px-4 sm:px-6"
               >
                 {isSubscribing ? 'Subscribing...' : 'Subscribe'}
               </Button>
@@ -98,8 +98,8 @@ const Footer = () => {
         </motion.div>
 
         {/* Main Footer Content */}
-        <div className="py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="py-8 sm:py-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8">
             {/* Company Info */}
             <motion.div
               className="lg:col-span-2"
@@ -203,14 +203,14 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="py-8 border-t border-brand-secondary/20">
-          <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="py-6 sm:py-8 border-t border-brand-secondary/20">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 px-4">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="text-sm text-brand-secondary/60 mb-4 md:mb-0"
+              className="text-xs sm:text-sm text-brand-secondary/60 mb-4 sm:mb-0 text-center sm:text-left"
             >
               © {new Date().getFullYear()} Veldavana Technologies. All rights reserved.
             </motion.div>

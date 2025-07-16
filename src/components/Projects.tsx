@@ -78,16 +78,16 @@ const Projects = () => {
       <div className="container mx-auto px-4">
         {/* Header */}
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16 px-4"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6">
             Featured Projects
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Explore our portfolio of successful projects that showcase our expertise in delivering 
             innovative solutions across various industries.
           </p>
@@ -101,7 +101,7 @@ const Projects = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
             transition={{ duration: 0.5 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center"
           >
             {/* Project Image */}
             <div className="relative group">
@@ -223,11 +223,11 @@ const Projects = () => {
         </div>
 
         {/* All Projects Grid */}
-        <div className="mt-20">
-          <h3 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-12">
-            More Projects
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="mt-16 sm:mt-20">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground text-center mb-8 sm:mb-12 px-4">
+              More Projects
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {projects.map((proj, index) => (
               <motion.div
                 key={proj.id}
