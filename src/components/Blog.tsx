@@ -86,7 +86,7 @@ const Blog = () => {
 
   return (
     <section className="py-20 bg-background">
-      <div className="container mx-auto px-4">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
         <motion.div 
           className="text-center mb-16"

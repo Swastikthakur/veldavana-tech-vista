@@ -44,9 +44,9 @@ const Services = () => {
 
   return (
     <section id="services" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
         <motion.div 
-          className="text-center mb-12 sm:mb-16 px-4"
+          className="text-center mb-16 sm:mb-20"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -60,7 +60,7 @@ const Services = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -99,7 +99,7 @@ const Services = () => {
 
         {/* Call to Action */}
         <motion.div
-          className="text-center mt-12 sm:mt-16 px-4"
+          className="text-center mt-16 sm:mt-20"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}

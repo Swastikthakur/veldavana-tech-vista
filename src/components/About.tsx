@@ -55,10 +55,10 @@ const About = () => {
 
   return (
     <section id="about" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
         <motion.div 
-          className="text-center mb-12 sm:mb-16 px-4"
+          className="text-center mb-16 sm:mb-20"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -74,7 +74,7 @@ const About = () => {
         </motion.div>
 
         {/* Mission, Vision, Values */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-16 sm:mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 mb-20 sm:mb-24">
           {values.map((value, index) => (
             <motion.div
               key={index}
@@ -104,7 +104,7 @@ const About = () => {
 
         {/* Team Section */}
         <motion.div
-          className="text-center mb-12 sm:mb-16 px-4"
+          className="text-center mb-16 sm:mb-20"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -119,7 +119,7 @@ const About = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
           {team.map((member, index) => (
             <motion.div
               key={index}
@@ -171,7 +171,7 @@ const About = () => {
 
         {/* Company Stats */}
         <motion.div
-          className="mt-16 sm:mt-20 text-center px-4"
+          className="mt-20 sm:mt-24 text-center"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -180,7 +180,7 @@ const About = () => {
           <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-8 sm:mb-12">
             Our Achievement
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 lg:gap-12">
             {[
               { number: '100+', label: 'Projects Delivered', suffix: '' },
               { number: '50+', label: 'Happy Clients', suffix: '' },

@@ -83,10 +83,10 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
         <motion.div 
-          className="text-center mb-12 sm:mb-16 px-4"
+          className="text-center mb-16 sm:mb-20"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -101,7 +101,7 @@ const Contact = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}

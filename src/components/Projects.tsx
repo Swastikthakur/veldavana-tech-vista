@@ -75,10 +75,10 @@ const Projects = () => {
 
   return (
     <section id="projects" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
         <motion.div 
-          className="text-center mb-12 sm:mb-16 px-4"
+          className="text-center mb-16 sm:mb-20"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}

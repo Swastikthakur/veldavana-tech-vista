@@ -61,7 +61,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-brand-primary text-brand-secondary">
-      <div className="container mx-auto px-4">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
         {/* Newsletter Section */}
         <motion.div
           className="py-8 sm:py-12 border-b border-brand-secondary/20"
@@ -70,7 +70,7 @@ const Footer = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="max-w-4xl mx-auto text-center px-4">
+          <div className="max-w-5xl mx-auto text-center">
             <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4">
               Stay Updated with Our Latest Insights
             </h3>
@@ -99,7 +99,7 @@ const Footer = () => {
 
         {/* Main Footer Content */}
         <div className="py-8 sm:py-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-12">
             {/* Company Info */}
             <motion.div
               className="lg:col-span-2"
@@ -204,7 +204,7 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div className="py-6 sm:py-8 border-t border-brand-secondary/20">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 px-4">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
