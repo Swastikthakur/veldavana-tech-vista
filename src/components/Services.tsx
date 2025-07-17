@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Code, Globe, Brain, Smartphone, Palette, Cloud } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
   const services = [
@@ -8,37 +9,43 @@ const Services = () => {
       icon: Code,
       title: 'Custom Software Development',
       description: 'Tailored software solutions built to meet your unique business requirements with cutting-edge technologies.',
-      features: ['Enterprise Applications', 'API Development', 'Database Design', 'System Integration']
+      features: ['Enterprise Applications', 'API Development', 'Database Design', 'System Integration'],
+      link: '/services/custom-software'
     },
     {
       icon: Globe,
       title: 'Web Development',
       description: 'Modern, responsive websites and web applications that deliver exceptional user experiences.',
-      features: ['React & Next.js', 'E-commerce Solutions', 'CMS Development', 'Progressive Web Apps']
+      features: ['React & Next.js', 'E-commerce Solutions', 'CMS Development', 'Progressive Web Apps'],
+      link: '/services/web-development'
     },
     {
       icon: Brain,
       title: 'AI Solutions',
       description: 'Intelligent automation and machine learning solutions to transform your business operations.',
-      features: ['Machine Learning', 'Natural Language Processing', 'Computer Vision', 'AI Chatbots']
+      features: ['Machine Learning', 'Natural Language Processing', 'Computer Vision', 'AI Chatbots'],
+      link: '/services/ai-solutions'
     },
     {
       icon: Smartphone,
       title: 'Mobile Apps',
       description: 'Native and cross-platform mobile applications for iOS and Android with seamless performance.',
-      features: ['React Native', 'Flutter', 'Native iOS/Android', 'App Store Optimization']
+      features: ['React Native', 'Flutter', 'Native iOS/Android', 'App Store Optimization'],
+      link: '/services/mobile-apps'
     },
     {
       icon: Palette,
       title: 'UI/UX Design',
       description: 'User-centered design solutions that create intuitive and engaging digital experiences.',
-      features: ['User Research', 'Wireframing', 'Prototyping', 'Design Systems']
+      features: ['User Research', 'Wireframing', 'Prototyping', 'Design Systems'],
+      link: '/services/ui-ux-design'
     },
     {
       icon: Cloud,
       title: 'Cloud & DevOps',
       description: 'Scalable cloud infrastructure and DevOps practices for reliable and efficient deployments.',
-      features: ['AWS & Azure', 'Docker & Kubernetes', 'CI/CD Pipelines', 'Infrastructure as Code']
+      features: ['AWS & Azure', 'Docker & Kubernetes', 'CI/CD Pipelines', 'Infrastructure as Code'],
+      link: '/services/cloud-devops'
     }
   ];
 
@@ -70,7 +77,8 @@ const Services = () => {
               viewport={{ once: true }}
               whileHover={{ y: -10 }}
             >
-              <Card className="h-full group hover:shadow-lg transition-all duration-300 border-0 bg-card shadow-sm hover:shadow-xl">
+              <Link to={service.link}>
+                <Card className="h-full group hover:shadow-lg transition-all duration-300 border-0 bg-card shadow-sm hover:shadow-xl cursor-pointer">
                 <CardHeader className="pb-4">
                   <div className="w-16 h-16 bg-gradient-to-br from-brand-primary to-brand-accent rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                     <service.icon className="w-8 h-8 text-brand-secondary" />
@@ -92,7 +100,8 @@ const Services = () => {
                     ))}
                   </ul>
                 </CardContent>
-              </Card>
+                </Card>
+              </Link>
             </motion.div>
           ))}
         </div>
