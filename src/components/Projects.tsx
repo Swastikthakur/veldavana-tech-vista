@@ -1,10 +1,9 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import mobileAppImage from '@/assets/project-mobile-app.jpg';
-import ecommerceImage from '@/assets/project-ecommerce.jpg';
 
 const Projects = () => {
   const [currentProject, setCurrentProject] = useState(0);
@@ -12,54 +11,22 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'FinanceFlow - Mobile Banking App',
-      description: 'A comprehensive mobile banking application with advanced security features, real-time notifications, and intuitive user interface.',
-      image: mobileAppImage,
-      technologies: ['React Native', 'Node.js', 'MongoDB', 'Firebase', 'AI/ML'],
-      category: 'Mobile App',
-      client: 'Regional Bank',
-      results: ['50% increase in user engagement', '95% user satisfaction rate', '40% reduction in support tickets'],
+      title: 'Sakhi Rescue App',
+      description: 'A revolutionary women safety app designed to address the growing security concerns in India. Empowering women with instant emergency features and essential safety tools.',
+      image: '/lovable-uploads/62713eae-d1f8-4db3-b1b1-d70c70ca0269.png',
+      technologies: ['React Native', 'Node.js', 'MongoDB', 'Firebase', 'GPS'],
+      category: 'Women Safety',
+      client: 'Social Initiative',
+      results: ['Instant emergency alerts to contacts', 'Direct police connectivity', 'Self-defense education accessibility'],
       features: [
-        'Biometric authentication',
-        'Real-time transaction tracking',
-        'AI-powered spending insights',
-        'Multi-language support',
-        'Offline mode capabilities'
-      ]
-    },
-    {
-      id: 2,
-      title: 'ShopSmart - E-commerce Platform',
-      description: 'A scalable e-commerce solution with AI-powered recommendations, advanced analytics, and seamless payment integration.',
-      image: ecommerceImage,
-      technologies: ['React', 'Next.js', 'PostgreSQL', 'Stripe', 'AWS'],
-      category: 'Web Platform',
-      client: 'Retail Chain',
-      results: ['200% increase in online sales', '60% improvement in conversion rate', '30% reduction in cart abandonment'],
-      features: [
-        'AI-powered product recommendations',
-        'Advanced search and filtering',
-        'Multi-vendor support',
-        'Inventory management',
-        'Analytics dashboard'
-      ]
-    },
-    {
-      id: 3,
-      title: 'HealthCare Connect - Telemedicine Platform',
-      description: 'A comprehensive telemedicine platform connecting patients with healthcare providers through secure video consultations.',
-      image: mobileAppImage,
-      technologies: ['React', 'WebRTC', 'Node.js', 'PostgreSQL', 'Socket.io'],
-      category: 'Healthcare',
-      client: 'Medical Group',
-      results: ['300% increase in patient consultations', '90% patient satisfaction', '45% reduction in appointment no-shows'],
-      features: [
-        'Secure video consultations',
-        'Electronic health records',
-        'Appointment scheduling',
-        'Prescription management',
-        'Payment processing'
-      ]
+        'Shake to Alert - Emergency messaging',
+        'One-stop police contact (112)',
+        'Women Helpline (1091) integration',
+        'Self-defense video tutorials',
+        'Real-time location sharing',
+        'Emergency contact management'
+      ],
+      route: '/projects/sakhi-rescue'
     }
   ];
 
@@ -174,10 +141,12 @@ const Projects = () => {
               </div>
 
               <div className="flex gap-4">
-                <Button className="bg-brand-primary hover:bg-brand-accent text-brand-secondary">
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  View Project
-                </Button>
+                <Link to={project.route || '#'}>
+                  <Button className="bg-brand-primary hover:bg-brand-accent text-brand-secondary">
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    View Project Details
+                  </Button>
+                </Link>
                 <Button variant="outline" className="border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-brand-secondary">
                   <Github className="w-4 h-4 mr-2" />
                   Case Study
