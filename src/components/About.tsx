@@ -127,8 +127,8 @@ const About = () => {
                   <img 
                     src={member.image} 
                     alt={member.name}
-                    className="w-full h-64 object-cover object-center"
-                    style={{ objectPosition: 'center 20%' }}
+                    className="w-full h-80 object-cover"
+                    style={{ objectPosition: 'center 30%' }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-primary/80 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
                 </div>
