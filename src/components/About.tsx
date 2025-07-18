@@ -1,32 +1,25 @@
 import { motion } from 'framer-motion';
 import { Target, Eye, Users, Award } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import ceoPic from '@/assets/team-ceo.jpg';
-import ctoPic from '@/assets/team-cto.jpg';
-import leadDevPic from '@/assets/team-lead-dev.jpg';
+// Using uploaded images directly
+const ceoPic = '/lovable-uploads/243154ff-c932-4df9-a1b9-bf0e09b4c690.png'; // Girl - CEO & Founder
+const ctoPic = '/lovable-uploads/1421a9c0-c454-4f57-99f4-ee5cfa21bbb4.png'; // Boy - CTO & Founder
 
 const About = () => {
   const team = [
     {
-      name: 'Rajesh Kumar',
+      name: 'Sarah Johnson',
       role: 'CEO & Founder',
       image: ceoPic,
-      bio: 'Visionary leader with 15+ years in technology and business strategy. Passionate about driving digital transformation.',
-      skills: ['Strategic Planning', 'Business Development', 'Team Leadership']
+      bio: 'Visionary leader with 15+ years in technology and business strategy. Passionate about driving digital transformation and building innovative solutions that make a real impact.',
+      skills: ['Strategic Planning', 'Business Development', 'Team Leadership', 'Digital Innovation']
     },
     {
-      name: 'Priya Sharma',
-      role: 'CTO',
+      name: 'Alex Rodriguez',
+      role: 'CTO & Founder',
       image: ctoPic,
-      bio: 'Technical architect with expertise in AI, cloud computing, and scalable system design. Leads our innovation initiatives.',
-      skills: ['AI/ML', 'Cloud Architecture', 'System Design']
-    },
-    {
-      name: 'Arjun Patel',
-      role: 'Lead Developer',
-      image: leadDevPic,
-      bio: 'Full-stack developer with passion for creating exceptional user experiences and robust backend systems.',
-      skills: ['React/Node.js', 'Mobile Development', 'DevOps']
+      bio: 'Technical architect with expertise in AI, cloud computing, and scalable system design. Leads our innovation initiatives and ensures cutting-edge technology implementation.',
+      skills: ['AI/ML', 'Cloud Architecture', 'System Design', 'Tech Leadership']
     }
   ];
 
@@ -119,7 +112,7 @@ const About = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 max-w-4xl mx-auto">
           {team.map((member, index) => (
             <motion.div
               key={index}
