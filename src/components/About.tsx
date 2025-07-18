@@ -8,14 +8,14 @@ const ctoPic = '/lovable-uploads/1421a9c0-c454-4f57-99f4-ee5cfa21bbb4.png'; // B
 const About = () => {
   const team = [
     {
-      name: 'Sarah Johnson',
+      name: 'Aastha Bhattacharjee',
       role: 'CEO & Founder',
       image: ceoPic,
       bio: 'Visionary leader with 15+ years in technology and business strategy. Passionate about driving digital transformation and building innovative solutions that make a real impact.',
       skills: ['Strategic Planning', 'Business Development', 'Team Leadership', 'Digital Innovation']
     },
     {
-      name: 'Alex Rodriguez',
+      name: 'Swastik Thakur',
       role: 'CTO & Founder',
       image: ctoPic,
       bio: 'Technical architect with expertise in AI, cloud computing, and scalable system design. Leads our innovation initiatives and ensures cutting-edge technology implementation.',
