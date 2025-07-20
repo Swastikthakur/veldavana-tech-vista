@@ -76,12 +76,13 @@ const Projects = () => {
           >
             {/* Project Image */}
             <div className="relative group">
-              <div className="relative overflow-hidden rounded-lg shadow-lg">
+              <div className="relative overflow-hidden">
                 <img 
                   src={project.images[0]} 
                   alt={project.title}
-                  className="w-full h-96 object-contain transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-[500px] object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-2xl"
                 />
+                <div className="absolute inset-0 bg-gradient-to-r from-brand-primary/5 via-transparent to-brand-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
             </div>
 
