@@ -15,10 +15,10 @@ const Projects = () => {
       description: 'A revolutionary women safety app designed to address the growing security concerns in India. Empowering women with instant emergency features and essential safety tools.',
       images: [
         '/lovable-uploads/62713eae-d1f8-4db3-b1b1-d70c70ca0269.png',
-        '/lovable-uploads/09e16b0d-accb-4c80-88ca-3ece3ccf46bf.png',
+        '/lovable-uploads/ce2125d3-536d-4233-ac36-4eac0f9078c5.png',
         '/lovable-uploads/1421a9c0-c454-4f57-99f4-ee5cfa21bbb4.png'
       ],
-      technologies: ['React Native', 'Node.js', 'MongoDB', 'Firebase', 'GPS'],
+      technologies: ['React Native', 'Node.js', 'Firebase', 'GPS'],
       category: 'Women Safety',
       client: 'Social Initiative',
       results: ['Instant emergency alerts to contacts', 'Direct police connectivity', 'Self-defense education accessibility'],
