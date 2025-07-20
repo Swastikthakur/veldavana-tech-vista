@@ -76,7 +76,7 @@ const Projects = () => {
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
