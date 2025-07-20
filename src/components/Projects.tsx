@@ -74,26 +74,14 @@ const Projects = () => {
             transition={{ duration: 0.5 }}
             className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center"
           >
-            {/* Project Images */}
+            {/* Project Image */}
             <div className="relative group">
-              <div className="relative overflow-hidden rounded-lg shadow-lg bg-muted/20 p-6">
-                <div className="flex gap-4 justify-center items-center">
-                  {project.images.map((image, index) => (
-                    <img 
-                      key={index}
-                      src={image} 
-                      alt={`${project.title} screenshot ${index + 1}`}
-                      className="h-80 object-contain transition-transform duration-300 group-hover:scale-105 rounded-md"
-                    />
-                  ))}
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Button size="sm" variant="outline" className="border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-brand-primary">
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    View Live
-                  </Button>
-                </div>
+              <div className="relative overflow-hidden rounded-lg shadow-lg">
+                <img 
+                  src={project.images[0]} 
+                  alt={project.title}
+                  className="w-full h-96 object-contain transition-transform duration-300 group-hover:scale-105"
+                />
               </div>
             </div>
 
