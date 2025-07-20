@@ -13,7 +13,11 @@ const Projects = () => {
       id: 1,
       title: 'Sakhi Rescue App',
       description: 'A revolutionary women safety app designed to address the growing security concerns in India. Empowering women with instant emergency features and essential safety tools.',
-      image: '/lovable-uploads/62713eae-d1f8-4db3-b1b1-d70c70ca0269.png',
+      images: [
+        '/lovable-uploads/62713eae-d1f8-4db3-b1b1-d70c70ca0269.png',
+        '/lovable-uploads/09e16b0d-accb-4c80-88ca-3ece3ccf46bf.png',
+        '/lovable-uploads/1421a9c0-c454-4f57-99f4-ee5cfa21bbb4.png'
+      ],
       technologies: ['React Native', 'Node.js', 'MongoDB', 'Firebase', 'GPS'],
       category: 'Women Safety',
       client: 'Social Initiative',
@@ -70,14 +74,19 @@ const Projects = () => {
             transition={{ duration: 0.5 }}
             className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center"
           >
-            {/* Project Image */}
+            {/* Project Images */}
             <div className="relative group">
-              <div className="relative overflow-hidden rounded-lg shadow-lg">
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full h-96 object-contain transition-transform duration-300 group-hover:scale-105 bg-muted/20"
-                />
+              <div className="relative overflow-hidden rounded-lg shadow-lg bg-muted/20 p-6">
+                <div className="flex gap-4 justify-center items-center">
+                  {project.images.map((image, index) => (
+                    <img 
+                      key={index}
+                      src={image} 
+                      alt={`${project.title} screenshot ${index + 1}`}
+                      className="h-80 object-contain transition-transform duration-300 group-hover:scale-105 rounded-md"
+                    />
+                  ))}
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <Button size="sm" variant="outline" className="border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-brand-primary">
@@ -211,7 +220,7 @@ const Projects = () => {
                 <Card className="h-full border-0 bg-card shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
                   <div className="relative">
                     <img 
-                      src={proj.image} 
+                      src={proj.images[0]} 
                       alt={proj.title}
                       className="w-full h-48 object-cover"
                     />
