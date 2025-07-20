@@ -75,14 +75,16 @@ const Projects = () => {
             className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center"
           >
             {/* Project Image */}
-            <div className="relative group">
-              <div className="relative overflow-hidden">
-                <img 
-                  src={project.images[0]} 
-                  alt={project.title}
-                  className="w-full h-[500px] object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-2xl"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-brand-primary/5 via-transparent to-brand-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative group flex justify-center">
+              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-muted/30 to-muted/10 p-8 shadow-2xl">
+                <div className="w-80 h-[600px] flex items-center justify-center">
+                  <img 
+                    src={project.images[0]} 
+                    alt={project.title}
+                    className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-xl"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-primary/10 via-transparent to-brand-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
               </div>
             </div>
 
