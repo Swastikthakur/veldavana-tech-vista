@@ -55,18 +55,6 @@ export async function fetchServices() {
   return fetchContentfulEntries('service'); // Replace with your service content type ID
 }
 
-export async function fetchProjects() {
-  return fetchContentfulEntries('project'); // Replace with your project content type ID
-}
-
-export async function fetchAchievements() {
-  return fetchContentfulEntries('achievement'); // Replace with your achievement content type ID
-}
-
-export async function fetchTestimonials() {
-  return fetchContentfulEntries('testimonial'); // Replace with your testimonial content type ID
-}
-
 export async function fetchTeamMembers() {
   return fetchContentfulEntries('teamMember'); // Replace with your team member content type ID
 }

@@ -1,12 +1,11 @@
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import ContentfulServices from '@/components/ContentfulServices';
+import Services from '@/components/Services';
 import About from '@/components/About';
-import ContentfulProjects from '@/components/ContentfulProjects';
-import ContentfulAchievements from '@/components/ContentfulAchievements';
-import ContentfulTestimonials from '@/components/ContentfulTestimonials';
+import Projects from '@/components/Projects';
+import Testimonials from '@/components/Testimonials';
 import TechStack from '@/components/TechStack';
-import ContentfulBlog from '@/components/ContentfulBlog';
+import Blog from '@/components/Blog';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
@@ -15,13 +14,12 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <Hero />
-      <ContentfulServices />
+      <Services />
       <About />
-      <ContentfulProjects />
-      <ContentfulAchievements />
-      <ContentfulTestimonials />
+      <Projects />
+      <Testimonials />
       <TechStack />
-      <ContentfulBlog />
+      <Blog />
       <Contact />
       <Footer />
     </div>
