@@ -55,7 +55,7 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* Floating Icons - Hidden on mobile */}
+      {/* Floating Icons */}
       {floatingElements.map((element, index) => (
         <motion.div
           key={index}
@@ -83,53 +83,52 @@ const Hero = () => {
       ))}
 
       {/* Content */}
-      <div className="relative z-30 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 text-center">
+      <div className="relative z-30 w-full max-w-7xl mx-auto px-6 md:px-12 text-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
           <motion.h1 
-            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-brand-secondary mb-4 sm:mb-6 lg:mb-8 leading-tight px-2"
+            className="text-4xl md:text-6xl lg:text-8xl font-bold text-brand-secondary mb-6 leading-tight"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             Transforming Ideas Into
-            <br className="hidden xs:block" />
-            <span className="xs:hidden"> </span>
+            <br />
             <span className="bg-gradient-to-r from-brand-secondary to-brand-secondary/80 bg-clip-text text-transparent">
               Digital Reality
             </span>
           </motion.h1>
           
           <motion.p 
-            className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-brand-secondary/90 mb-6 sm:mb-8 lg:mb-10 max-w-xs xs:max-w-sm sm:max-w-2xl lg:max-w-4xl mx-auto leading-relaxed px-2"
+            className="text-lg md:text-xl lg:text-2xl text-brand-secondary/90 mb-8 max-w-4xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             We are Veldavana Technologies, your trusted partner in digital transformation. 
-            <span className="hidden sm:inline">Specializing in cutting-edge software solutions, AI integration, and innovative web development.</span>
+            Specializing in cutting-edge software solutions, AI integration, and innovative web development.
           </motion.p>
           
           <motion.div 
-            className="flex flex-col xs:flex-row gap-3 xs:gap-4 sm:gap-6 justify-center items-center px-4"
+            className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <Button 
               size="lg" 
-              className="w-full xs:w-auto bg-brand-secondary text-brand-primary hover:bg-brand-secondary/90 font-semibold px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base lg:text-lg rounded-lg transition-all duration-300 hover:shadow-xl hover:scale-105 group"
+              className="bg-brand-secondary text-brand-primary hover:bg-brand-secondary/90 font-semibold px-8 py-4 text-lg rounded-lg transition-all duration-300 hover:shadow-xl hover:scale-105 group"
             >
               Start Your Project
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 
               size="lg" 
               variant="outline" 
-              className="w-full xs:w-auto border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-brand-primary font-semibold px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base lg:text-lg rounded-lg transition-all duration-300 hover:shadow-xl"
+              className="border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-brand-primary font-semibold px-8 py-4 text-lg rounded-lg transition-all duration-300 hover:shadow-xl"
             >
               View Our Work
             </Button>
@@ -138,7 +137,7 @@ const Hero = () => {
         
         {/* Stats */}
         <motion.div 
-          className="mt-12 sm:mt-16 lg:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 xl:gap-12 max-w-6xl mx-auto px-4"
+          className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
@@ -156,10 +155,10 @@ const Hero = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
             >
-              <div className="text-lg xs:text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-brand-secondary mb-1 sm:mb-2">
+              <div className="text-3xl lg:text-4xl font-bold text-brand-secondary mb-2">
                 {stat.number}
               </div>
-              <div className="text-brand-secondary/80 text-xs sm:text-sm lg:text-base leading-tight">
+              <div className="text-brand-secondary/80 text-sm lg:text-base">
                 {stat.label}
               </div>
             </motion.div>
@@ -169,7 +168,7 @@ const Hero = () => {
       
       {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 hidden sm:block z-30"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden sm:block z-30"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.2 }}
