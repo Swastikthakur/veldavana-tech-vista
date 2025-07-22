@@ -192,11 +192,11 @@ const Projects = () => {
         </div>
 
         {/* All Projects Grid */}
-          <div className="mt-16 sm:mt-20">
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground text-center mb-8 sm:mb-12 px-4">
-              More Projects
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        <div className="mt-16 sm:mt-20">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground text-center mb-8 sm:mb-12 px-4">
+            More Projects
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {projects.map((proj, index) => (
               <motion.div
                 key={proj.id}

@@ -172,7 +172,7 @@ const About = () => {
           viewport={{ once: true }}
         >
           <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-8 sm:mb-12">
-            Our Achievement
+            Our Achievements
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 lg:gap-12">
             {[
