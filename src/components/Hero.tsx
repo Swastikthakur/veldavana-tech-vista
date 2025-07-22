@@ -1,9 +1,12 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Code, Zap, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import heroBackground from '@/assets/hero-bg.jpg';
+import Spline from '@splinetool/react-spline';
+import { useState } from 'react';
 
 const Hero = () => {
+  const [isSplineLoaded, setIsSplineLoaded] = useState(false);
+
   const floatingElements = [
     { icon: Code, delay: 0.2, x: 100, y: 50 },
     { icon: Zap, delay: 0.4, x: -80, y: 80 },
@@ -12,17 +15,25 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBackground})` }}
-      />
+      {/* Spline 3D Background */}
+      <div className="absolute inset-0 z-0">
+        <Spline
+          scene="https://prod.spline.design/lpX7xTNpmN5zjwg4/scene.splinecode"
+          onLoad={() => setIsSplineLoaded(true)}
+          className="w-full h-full"
+        />
+      </div>
+      
+      {/* Fallback background while Spline loads */}
+      {!isSplineLoaded && (
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/95 via-brand-primary/90 to-brand-accent/95" />
+      )}
       
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/95 via-brand-primary/90 to-brand-accent/95" />
+      <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/30 via-brand-primary/20 to-brand-accent/30 z-10" />
       
       {/* Animated Particles */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-20">
         {Array.from({ length: 50 }).map((_, i) => (
           <motion.div
             key={i}
@@ -48,7 +59,7 @@ const Hero = () => {
       {floatingElements.map((element, index) => (
         <motion.div
           key={index}
-          className="absolute text-brand-secondary/20 hidden lg:block"
+          className="absolute text-brand-secondary/20 hidden lg:block z-20"
           style={{
             left: `calc(50% + ${element.x}px)`,
             top: `calc(50% + ${element.y}px)`,
@@ -72,7 +83,7 @@ const Hero = () => {
       ))}
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 text-center">
+      <div className="relative z-30 w-full max-w-7xl mx-auto px-6 md:px-12 text-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -158,7 +169,7 @@ const Hero = () => {
       
       {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 hidden sm:block"
+        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 hidden sm:block z-30"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.2 }}
