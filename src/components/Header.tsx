@@ -36,7 +36,7 @@ const Header = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Logo */}
           <motion.div
             className="flex items-center space-x-2"
@@ -44,19 +44,19 @@ const Header = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="w-10 h-10 bg-gradient-to-r from-brand-primary to-brand-accent rounded-lg flex items-center justify-center">
-              <span className="text-brand-secondary font-bold text-xl">V</span>
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-brand-primary to-brand-accent rounded-lg flex items-center justify-center">
+              <span className="text-brand-secondary font-bold text-lg sm:text-xl">V</span>
             </div>
-            <span className="text-xl font-bold text-foreground">Veldavana</span>
+            <span className="text-lg sm:text-xl font-bold text-foreground">Veldavana</span>
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             {navItems.map((item, index) => (
               <motion.a
                 key={item.name}
                 href={item.href}
-                className="text-foreground hover:text-brand-primary transition-colors duration-200 relative group"
+                className="text-foreground hover:text-brand-primary transition-colors duration-200 relative group text-sm xl:text-base"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
@@ -69,14 +69,14 @@ const Header = () => {
 
           {/* CTA Button */}
           <motion.div
-            className="hidden md:block"
+            className="hidden lg:block"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
             <Button 
               variant="default" 
-              className="bg-brand-primary hover:bg-brand-accent text-brand-secondary font-semibold px-6 py-2 rounded-lg transition-all duration-300 hover:shadow-lg"
+              className="bg-brand-primary hover:bg-brand-accent text-brand-secondary font-semibold px-4 xl:px-6 py-2 rounded-lg transition-all duration-300 hover:shadow-lg text-sm xl:text-base"
             >
               Get Started
             </Button>
@@ -84,10 +84,10 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-foreground hover:text-brand-primary transition-colors duration-200"
+            className="lg:hidden text-foreground hover:text-brand-primary transition-colors duration-200 p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
 
@@ -95,18 +95,18 @@ const Header = () => {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md shadow-lg"
+              className="lg:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md shadow-lg border-t border-border"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <nav className="flex flex-col space-y-4 p-4">
+              <nav className="flex flex-col space-y-1 p-4">
                 {navItems.map((item, index) => (
                   <motion.a
                     key={item.name}
                     href={item.href}
-                    className="text-foreground hover:text-brand-primary transition-colors duration-200 py-2"
+                    className="text-foreground hover:text-brand-primary transition-colors duration-200 py-3 px-2 rounded-md hover:bg-muted/50"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: 0.1 * index }}
@@ -122,7 +122,7 @@ const Header = () => {
                 >
                   <Button 
                     variant="default" 
-                    className="w-full bg-brand-primary hover:bg-brand-accent text-brand-secondary font-semibold py-2 rounded-lg transition-all duration-300"
+                    className="w-full bg-brand-primary hover:bg-brand-accent text-brand-secondary font-semibold py-3 rounded-lg transition-all duration-300 mt-4"
                   >
                     Get Started
                   </Button>
