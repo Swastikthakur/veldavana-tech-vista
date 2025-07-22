@@ -51,7 +51,7 @@ const Header = () => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item, index) => (
               <motion.a
                 key={item.name}
@@ -69,7 +69,7 @@ const Header = () => {
 
           {/* CTA Button */}
           <motion.div
-            className="hidden lg:block"
+            className="hidden md:block"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -84,7 +84,7 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden text-foreground hover:text-brand-primary transition-colors duration-200"
+            className="md:hidden text-foreground hover:text-brand-primary transition-colors duration-200"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -95,18 +95,18 @@ const Header = () => {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              className="lg:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md shadow-lg border-t border-border"
+              className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md shadow-lg"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <nav className="flex flex-col space-y-1 p-6">
+              <nav className="flex flex-col space-y-4 p-4">
                 {navItems.map((item, index) => (
                   <motion.a
                     key={item.name}
                     href={item.href}
-                    className="text-foreground hover:text-brand-primary transition-colors duration-200 py-3 px-2 rounded-md hover:bg-muted/50"
+                    className="text-foreground hover:text-brand-primary transition-colors duration-200 py-2"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: 0.1 * index }}
@@ -122,7 +122,7 @@ const Header = () => {
                 >
                   <Button 
                     variant="default" 
-                    className="w-full bg-brand-primary hover:bg-brand-accent text-brand-secondary font-semibold py-3 rounded-lg transition-all duration-300 mt-4"
+                    className="w-full bg-brand-primary hover:bg-brand-accent text-brand-secondary font-semibold py-2 rounded-lg transition-all duration-300"
                   >
                     Get Started
                   </Button>

@@ -51,6 +51,18 @@ export function useServices(limit?: number) {
   return useContentful('service', limit); // Replace with your actual content type ID
 }
 
+export function useProjects(limit?: number) {
+  return useContentful('project', limit); // Replace with your actual content type ID
+}
+
+export function useAchievements(limit?: number) {
+  return useContentful('achievement', limit); // Replace with your actual content type ID
+}
+
+export function useTestimonials(limit?: number) {
+  return useContentful('testimonial', limit); // Replace with your actual content type ID
+}
+
 export function useTeamMembers(limit?: number) {
   return useContentful('teamMember', limit); // Replace with your actual content type ID
 }

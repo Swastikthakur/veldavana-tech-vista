@@ -2,115 +2,128 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* Veldavana Technologies Design System - Professional IT Consultancy
+Primary: #0B1957 (deep navy blue)
+Secondary: #FDFCE8 (soft cream)
+All colors MUST be HSL.
+*/
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  color: inherit;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
+@layer base {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    --background: 58 80% 95%; /* #FDFCE8 - soft cream */
+    --foreground: 228 73% 19%; /* #0B1957 - deep navy blue */
+
+    --card: 58 80% 95%; /* #FDFCE8 - soft cream */
+    --card-foreground: 228 73% 19%;
+
+    --popover: 58 80% 95%; /* #FDFCE8 - soft cream */
+    --popover-foreground: 228 73% 19%;
+
+    --primary: 228 73% 19%; /* #0B1957 - deep navy blue */
+    --primary-foreground: 58 80% 95%; /* #FDFCE8 - soft cream */
+
+    --secondary: 228 73% 19%;
+    --secondary-foreground: 58 80% 95%;
+
+    --muted: 228 20% 92%;
+    --muted-foreground: 228 20% 45%;
+
+    --accent: 228 73% 25%;
+    --accent-foreground: 58 80% 95%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 58 80% 95%;
+
+    --border: 228 20% 85%;
+    --input: 228 20% 85%;
+    --ring: 228 73% 19%;
+
+    --radius: 0.75rem;
+    
+    /* Custom Veldavana brand colors */
+    --brand-primary: 228 73% 19%; /* #0B1957 */
+    --brand-secondary: 58 80% 95%; /* #FDFCE8 */
+    --brand-accent: 228 73% 25%; /* Slightly lighter navy */
+    --brand-success: 142 71% 45%;
+    --brand-warning: 45 93% 47%;
+    --brand-error: 0 84% 60%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--brand-primary)), hsl(var(--brand-accent)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--brand-secondary)), hsl(var(--muted)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--brand-primary) / 0.95), hsl(var(--brand-accent) / 0.9));
+    
+    /* Shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--brand-primary) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--brand-primary) / 0.2);
+    --shadow-card: 0 4px 20px -2px hsl(var(--brand-primary) / 0.1);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
-  a:hover {
-    color: #747bff;
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
   }
 }

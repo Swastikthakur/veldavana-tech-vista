@@ -1,137 +1,182 @@
 import { motion } from 'framer-motion';
-import { Code, Globe, Brain, Smartphone, Palette, Cloud } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Link } from 'react-router-dom';
+import { ArrowRight, Code, Zap, Globe } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import heroBackground from '@/assets/hero-bg.jpg';
 
-const Services = () => {
-  const services = [
-    {
-      icon: Code,
-      title: 'Custom Software Development',
-      description: 'Tailored software solutions built to meet your unique business requirements with cutting-edge technologies.',
-      features: ['Enterprise Applications', 'API Development', 'Database Design', 'System Integration'],
-      link: '/services/custom-software'
-    },
-    {
-      icon: Globe,
-      title: 'Web Development',
-      description: 'Modern, responsive websites and web applications that deliver exceptional user experiences.',
-      features: ['React & Next.js', 'E-commerce Solutions', 'CMS Development', 'Progressive Web Apps'],
-      link: '/services/web-development'
-    },
-    {
-      icon: Brain,
-      title: 'AI Solutions',
-      description: 'Intelligent automation and machine learning solutions to transform your business operations.',
-      features: ['Machine Learning', 'Natural Language Processing', 'Computer Vision', 'AI Chatbots'],
-      link: '/services/ai-solutions'
-    },
-    {
-      icon: Smartphone,
-      title: 'Mobile Apps',
-      description: 'Native and cross-platform mobile applications for iOS and Android with seamless performance.',
-      features: ['React Native', 'Flutter', 'Native iOS/Android', 'App Store Optimization'],
-      link: '/services/mobile-apps'
-    },
-    {
-      icon: Palette,
-      title: 'UI/UX Design',
-      description: 'User-centered design solutions that create intuitive and engaging digital experiences.',
-      features: ['User Research', 'Wireframing', 'Prototyping', 'Design Systems'],
-      link: '/services/ui-ux-design'
-    },
-    {
-      icon: Cloud,
-      title: 'Cloud & DevOps',
-      description: 'Scalable cloud infrastructure and DevOps practices for reliable and efficient deployments.',
-      features: ['AWS & Azure', 'Docker & Kubernetes', 'CI/CD Pipelines', 'Infrastructure as Code'],
-      link: '/services/cloud-devops'
-    }
+const Hero = () => {
+  const floatingElements = [
+    { icon: Code, delay: 0.2, x: 100, y: 50 },
+    { icon: Zap, delay: 0.4, x: -80, y: 80 },
+    { icon: Globe, delay: 0.6, x: 150, y: -60 },
   ];
 
   return (
-    <section id="services" className="py-20 bg-background">
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-        <motion.div 
-          className="text-center mb-12 sm:mb-16 lg:mb-20"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6">
-            Our Services
-          </h2>
-          <p className="text-sm xs:text-base sm:text-lg lg:text-xl text-muted-foreground max-w-xs xs:max-w-sm sm:max-w-2xl lg:max-w-3xl mx-auto px-4">
-            We offer comprehensive technology solutions designed to accelerate your digital transformation journey.
-          </p>
-        </motion.div>
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroBackground})` }}
+      />
+      
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/95 via-brand-primary/90 to-brand-accent/95" />
+      
+      {/* Animated Particles */}
+      <div className="absolute inset-0">
+        {Array.from({ length: 50 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-brand-secondary/30 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0.3, 1, 0.3],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
+          />
+        ))}
+      </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-          {services.map((service, index) => (
+      {/* Floating Icons - Hidden on mobile */}
+      {floatingElements.map((element, index) => (
+        <motion.div
+          key={index}
+          className="absolute text-brand-secondary/20 hidden lg:block"
+          style={{
+            left: `calc(50% + ${element.x}px)`,
+            top: `calc(50% + ${element.y}px)`,
+          }}
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ 
+            opacity: 1, 
+            scale: 1,
+            y: [0, -20, 0],
+            rotate: [0, 10, -10, 0]
+          }}
+          transition={{
+            duration: 2,
+            delay: element.delay,
+            y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+            rotate: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+          }}
+        >
+          <element.icon size={60} />
+        </motion.div>
+      ))}
+
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.h1 
+            className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-brand-secondary mb-4 sm:mb-6 leading-tight px-2"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Transforming Ideas Into
+            <br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>
+            <span className="bg-gradient-to-r from-brand-secondary to-brand-secondary/80 bg-clip-text text-transparent">
+              Digital Reality
+            </span>
+          </motion.h1>
+          
+          <motion.p 
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-brand-secondary/90 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed px-2"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            We are Veldavana Technologies, your trusted partner in digital transformation. 
+            Specializing in cutting-edge software solutions, AI integration, and innovative web development.
+          </motion.p>
+          
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <Button 
+              size="lg" 
+              className="w-full sm:w-auto bg-brand-secondary text-brand-primary hover:bg-brand-secondary/90 font-semibold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-lg transition-all duration-300 hover:shadow-xl hover:scale-105 group"
+            >
+              Start Your Project
+              <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="w-full sm:w-auto border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-brand-primary font-semibold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-lg transition-all duration-300 hover:shadow-xl"
+            >
+              View Our Work
+            </Button>
+          </motion.div>
+        </motion.div>
+        
+        {/* Stats */}
+        <motion.div 
+          className="mt-16 sm:mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-12 max-w-6xl mx-auto"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+        >
+          {[
+            { number: '100+', label: 'Projects Completed' },
+            { number: '50+', label: 'Happy Clients' },
+            { number: '5+', label: 'Years Experience' },
+            { number: '24/7', label: 'Support' },
+          ].map((stat, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -10 }}
+              className="text-center"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
             >
-              <Link to={service.link}>
-                <Card className="h-full group hover:shadow-lg transition-all duration-300 border-0 bg-card shadow-sm hover:shadow-xl cursor-pointer">
-                <CardHeader className="pb-4 p-4 sm:p-6">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-brand-primary to-brand-accent rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <service.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-brand-secondary" />
-                  </div>
-                  <CardTitle className="text-lg sm:text-xl font-bold text-foreground group-hover:text-brand-primary transition-colors duration-300">
-                    {service.title}
-                  </CardTitle>
-                  <CardDescription className="text-sm sm:text-base text-muted-foreground">
-                    {service.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="p-4 sm:p-6 pt-0">
-                  <ul className="space-y-2">
-                    {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-xs sm:text-sm text-muted-foreground">
-                        <div className="w-2 h-2 bg-brand-primary rounded-full mr-3 flex-shrink-0"></div>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-                </Card>
-              </Link>
+              <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-brand-secondary mb-1 sm:mb-2">
+                {stat.number}
+              </div>
+              <div className="text-brand-secondary/80 text-xs sm:text-sm md:text-base leading-tight">
+                {stat.label}
+              </div>
             </motion.div>
           ))}
-        </div>
-
-        {/* Call to Action */}
-        <motion.div
-          className="text-center mt-12 sm:mt-16 lg:mt-20 px-4"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-lg xs:text-xl sm:text-2xl font-bold text-foreground mb-4">
-            Ready to Transform Your Business?
-          </h3>
-          <p className="text-sm sm:text-base text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto">
-            Let's discuss how our expertise can help you achieve your digital goals. 
-            Contact us today for a free consultation.
-          </p>
-          <motion.button
-            className="bg-brand-primary text-brand-secondary px-6 sm:px-8 py-3 rounded-lg font-semibold hover:bg-brand-accent transition-colors duration-300 hover:shadow-lg text-sm sm:text-base"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Get Free Consultation
-          </motion.button>
         </motion.div>
       </div>
+      
+      {/* Scroll Indicator */}
+      <motion.div
+        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 hidden sm:block"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1.2 }}
+      >
+        <motion.div
+          className="w-6 h-10 border-2 border-brand-secondary/50 rounded-full flex justify-center"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <motion.div
+            className="w-1 h-3 bg-brand-secondary/50 rounded-full mt-2"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
 
-export default Services;
+export default Hero;
