@@ -10,46 +10,28 @@ const Testimonials = () => {
   const testimonials = [
     {
       id: 1,
-      name: 'Sarah Johnson',
-      role: 'CEO, TechStart Inc.',
-      company: 'TechStart Inc.',
-      content: 'Veldavana Technologies transformed our business with their innovative AI solutions. The team delivered beyond our expectations, and their ongoing support has been exceptional.',
+      name: 'Thembi',
+      role: 'Revolutionizing tuck shops in Zimbabwe',
+      company: 'Zimbabwe',
+      content: 'Veldavana Technologies not only delivers exceptional tech solutions and support, but their market research exceeded all expectations, completely transforming the way my business operates.',
       rating: 5,
       image: '/api/placeholder/80/80'
     },
     {
       id: 2,
-      name: 'Michael Chen',
-      role: 'CTO, RetailPro',
-      company: 'RetailPro',
-      content: 'The e-commerce platform they built for us increased our online sales by 200%. Their attention to detail and technical expertise is truly impressive.',
+      name: 'Dr. Advik Sharma',
+      role: 'Founder of Vytal Aid',
+      company: 'Vytal Aid',
+      content: 'Veldavana Technologies stands out for consistently delivering high-quality work ahead of deadlines. Their team goes the extra mile, supporting client presentations, offering strategic input, and maintaining a level of professionalism that truly sets them apart.',
       rating: 5,
       image: '/api/placeholder/80/80'
     },
     {
       id: 3,
-      name: 'Emily Rodriguez',
-      role: 'Founder, HealthFirst',
-      company: 'HealthFirst',
-      content: 'Working with Veldavana was a game-changer for our telemedicine platform. They understood our vision and delivered a solution that exceeded all expectations.',
-      rating: 5,
-      image: '/api/placeholder/80/80'
-    },
-    {
-      id: 4,
-      name: 'David Kim',
-      role: 'Operations Director, LogiFlow',
-      company: 'LogiFlow',
-      content: 'The custom software solution they developed streamlined our operations and reduced costs by 30%. Professional team with excellent communication throughout.',
-      rating: 5,
-      image: '/api/placeholder/80/80'
-    },
-    {
-      id: 5,
-      name: 'Lisa Thompson',
-      role: 'Marketing Head, BrandBoost',
-      company: 'BrandBoost',
-      content: 'Their web development skills are outstanding. Our new website not only looks amazing but also performs exceptionally well. Highly recommended!',
+      name: 'More Voices',
+      role: 'Loading...',
+      company: 'Trusted by Clients',
+      content: 'Trusted by Clients, More Voices Loading...',
       rating: 5,
       image: '/api/placeholder/80/80'
     }
@@ -177,32 +159,6 @@ const Testimonials = () => {
             <ChevronRight className="w-4 h-4" />
           </Button>
         </div>
-
-        {/* Overall Rating */}
-        <motion.div
-          className="text-center mt-16"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <div className="inline-flex items-center space-x-2 bg-card rounded-lg p-6 shadow-sm">
-            <div className="flex items-center">
-              {[...Array(5)].map((_, i) => (
-                <Star 
-                  key={i} 
-                  className="w-6 h-6 fill-yellow-400 text-yellow-400" 
-                />
-              ))}
-            </div>
-            <div className="ml-4">
-              <div className="text-2xl font-bold text-foreground">4.9/5</div>
-              <p className="text-sm text-muted-foreground">
-                Based on 50+ client reviews
-              </p>
-            </div>
-          </div>
-        </motion.div>
 
         {/* Call to Action */}
         <motion.div

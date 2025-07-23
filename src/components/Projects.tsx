@@ -191,68 +191,6 @@ const Projects = () => {
           </div>
         </div>
 
-        {/* All Projects Grid */}
-        <div className="mt-16 sm:mt-20">
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground text-center mb-8 sm:mb-12 px-4">
-            More Projects
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            {projects.map((proj, index) => (
-              <motion.div
-                key={proj.id}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-                className="cursor-pointer"
-                onClick={() => setCurrentProject(index)}
-              >
-                <Card className="h-full border-0 bg-card shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
-                  <div className="relative">
-                    <img 
-                      src={proj.images[0]} 
-                      alt={proj.title}
-                      className="w-full h-48 object-cover"
-                    />
-                    <div className={`absolute top-4 left-4 px-2 py-1 text-xs rounded-full ${
-                      index === currentProject 
-                        ? 'bg-brand-primary text-brand-secondary' 
-                        : 'bg-black/50 text-white'
-                    }`}>
-                      {proj.category}
-                    </div>
-                  </div>
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-lg font-bold text-foreground line-clamp-2">
-                      {proj.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground text-sm line-clamp-3 mb-4">
-                      {proj.description}
-                    </p>
-                    <div className="flex flex-wrap gap-1">
-                      {proj.technologies.slice(0, 3).map((tech, techIndex) => (
-                        <span 
-                          key={techIndex}
-                          className="px-2 py-1 bg-brand-primary/10 text-brand-primary text-xs rounded"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                      {proj.technologies.length > 3 && (
-                        <span className="px-2 py-1 bg-muted text-muted-foreground text-xs rounded">
-                          +{proj.technologies.length - 3}
-                        </span>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );

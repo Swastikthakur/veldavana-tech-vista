@@ -110,7 +110,13 @@ const Hero = () => {
           >
             <Button 
               size="lg" 
-              className="w-full sm:w-auto bg-brand-secondary text-brand-primary hover:bg-brand-secondary/90 font-semibold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-lg transition-all duration-300 hover:shadow-xl hover:scale-105 group"
+             className="w-full sm:w-auto bg-brand-secondary text-brand-primary hover:bg-brand-secondary/90 font-semibold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-lg transition-all duration-300 hover:shadow-xl hover:scale-105 group"
+             onClick={() => {
+               const servicesSection = document.getElementById('services');
+               if (servicesSection) {
+                 servicesSection.scrollIntoView({ behavior: 'smooth' });
+               }
+             }}
             >
               Start Your Project
               <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />

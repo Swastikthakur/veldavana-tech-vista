@@ -11,14 +11,14 @@ const About = () => {
       name: 'Aastha Bhattacharjee',
       role: 'CEO & Founder',
       image: ceoPic,
-      bio: 'Visionary leader with 15+ years in technology and business strategy. Passionate about driving digital transformation and building innovative solutions that make a real impact.',
+      bio: 'Bringing 4+ years of leadership, innovation, and strategic foresight to Veldavana Technologies, driving ideas from concept to impactful, scalable solutions through clear vision and purpose-led execution.',
       skills: ['Strategic Planning', 'Business Development', 'Team Leadership', 'Digital Innovation']
     },
     {
       name: 'Swastik Thakur',
       role: 'CTO & Founder',
       image: ctoPic,
-      bio: 'Technical architect with expertise in AI, cloud computing, and scalable system design. Leads our innovation initiatives and ensures cutting-edge technology implementation.',
+      bio: 'Blending 5+ years of market insight, financial strategy, and tech expertise to ensure every idea at Veldavana Technologies is grounded, scalable, and built for real-world impact.',
       skills: ['AI/ML', 'Cloud Architecture', 'System Design', 'Tech Leadership']
     }
   ];
@@ -27,17 +27,17 @@ const About = () => {
     {
       icon: Target,
       title: 'Our Mission',
-      description: 'To empower businesses through innovative technology solutions that drive growth, efficiency, and competitive advantage in the digital age.'
+      description: 'We empower businesses with scalable, intuitive tech that solves real problems, elevates brands, and shapes the present and the future.'
     },
     {
       icon: Eye,
       title: 'Our Vision',
-      description: 'To be the leading technology partner for businesses seeking digital transformation, recognized for excellence, innovation, and client success.'
+      description: 'To be the most trusted name in digital innovation, where ideas become intelligent solutions driving global transformation.'
     },
     {
       icon: Users,
       title: 'Our Values',
-      description: 'Integrity, innovation, excellence, and client-centricity guide everything we do. We believe in building long-term partnerships based on trust and results.'
+      description: 'We build tech with clarity & speed that simplifies & collaborates with integrity, and earns lasting trust.'
     },
     {
       icon: Award,
@@ -176,8 +176,8 @@ const About = () => {
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 lg:gap-12">
             {[
-              { number: '100+', label: 'Projects Delivered', suffix: '' },
-              { number: '50+', label: 'Happy Clients', suffix: '' },
+              { number: '10+', label: 'Prototypes Built', suffix: '' },
+              { number: '5+', label: 'Pilot Clients & Collaborations', suffix: '' },
               { number: '98', label: 'Success Rate', suffix: '%' },
               { number: '24/7', label: 'Support Available', suffix: '' }
             ].map((stat, index) => (
