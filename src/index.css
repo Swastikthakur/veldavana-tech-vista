@@ -62,6 +62,11 @@ All colors MUST be HSL.
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
+    /* Header transitions */
+    --header-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --logo-transition: opacity 0.3s ease-in-out;
+    --nav-transition: color 0.3s ease-in-out;
+
     --sidebar-background: 0 0% 98%;
 
     --sidebar-foreground: 240 5.3% 26.1%;

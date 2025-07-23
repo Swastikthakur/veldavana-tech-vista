@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import logoWhite from '@/assets/logo-white.svg';
+import logoBlue from '@/assets/logo-blue.svg';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,8 +30,8 @@ const Header = () => {
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-background/95 backdrop-blur-md shadow-sm' 
-          : 'bg-transparent'
+          ? 'bg-background/95 backdrop-blur-md shadow-sm border-b border-border/20' 
+          : 'bg-brand-primary/95 backdrop-blur-md'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -39,15 +41,19 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <motion.div
-            className="flex items-center space-x-2"
+            className="flex items-center space-x-3"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="w-10 h-10 bg-gradient-to-r from-brand-primary to-brand-accent rounded-lg flex items-center justify-center">
-              <span className="text-brand-secondary font-bold text-xl">V</span>
-            </div>
-            <span className="text-xl font-bold text-foreground">Veldavana</span>
+            <motion.img
+              src={isScrolled ? logoBlue : logoWhite}
+              alt="Veldavana Technologies"
+              className="h-12 w-auto transition-all duration-300"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            />
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -56,13 +62,19 @@ const Header = () => {
               <motion.a
                 key={item.name}
                 href={item.href}
-                className="text-foreground hover:text-brand-primary transition-colors duration-200 relative group"
+                className={`transition-all duration-300 relative group font-medium ${
+                  isScrolled 
+                    ? 'text-brand-primary hover:text-brand-accent' 
+                    : 'text-brand-secondary hover:text-brand-secondary/80'
+                }`}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
               >
                 {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-primary transition-all duration-300 group-hover:w-full"></span>
+                <span className={`absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
+                  isScrolled ? 'bg-brand-primary' : 'bg-brand-secondary'
+                }`}></span>
               </motion.a>
             ))}
           </nav>
@@ -76,7 +88,11 @@ const Header = () => {
           >
             <Button 
               variant="default" 
-              className="bg-brand-primary hover:bg-brand-accent text-brand-secondary font-semibold px-6 py-2 rounded-lg transition-all duration-300 hover:shadow-lg"
+              className={`font-semibold px-6 py-2 rounded-lg transition-all duration-300 hover:shadow-lg ${
+                isScrolled
+                  ? 'bg-brand-primary hover:bg-brand-accent text-brand-secondary'
+                  : 'bg-brand-secondary hover:bg-brand-secondary/90 text-brand-primary'
+              }`}
             >
               Get Started
             </Button>
@@ -84,7 +100,11 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-foreground hover:text-brand-primary transition-colors duration-200"
+            className={`md:hidden transition-colors duration-300 ${
+              isScrolled 
+                ? 'text-brand-primary hover:text-brand-accent' 
+                : 'text-brand-secondary hover:text-brand-secondary/80'
+            }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -95,7 +115,11 @@ const Header = () => {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md shadow-lg"
+              className={`md:hidden absolute top-full left-0 right-0 backdrop-blur-md shadow-lg border-t ${
+                isScrolled 
+                  ? 'bg-background/95 border-border/20' 
+                  : 'bg-brand-primary/95 border-brand-secondary/20'
+              }`}
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
@@ -106,7 +130,11 @@ const Header = () => {
                   <motion.a
                     key={item.name}
                     href={item.href}
-                    className="text-foreground hover:text-brand-primary transition-colors duration-200 py-2"
+                    className={`transition-colors duration-300 py-3 block font-medium ${
+                      isScrolled 
+                        ? 'text-brand-primary hover:text-brand-accent' 
+                        : 'text-brand-secondary hover:text-brand-secondary/80'
+                    }`}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: 0.1 * index }}
@@ -122,7 +150,11 @@ const Header = () => {
                 >
                   <Button 
                     variant="default" 
-                    className="w-full bg-brand-primary hover:bg-brand-accent text-brand-secondary font-semibold py-2 rounded-lg transition-all duration-300"
+                    className={`w-full font-semibold py-3 rounded-lg transition-all duration-300 ${
+                      isScrolled
+                        ? 'bg-brand-primary hover:bg-brand-accent text-brand-secondary'
+                        : 'bg-brand-secondary hover:bg-brand-secondary/90 text-brand-primary'
+                    }`}
                   >
                     Get Started
                   </Button>

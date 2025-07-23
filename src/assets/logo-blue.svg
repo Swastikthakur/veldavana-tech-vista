@@ -1,0 +1,21 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Blue version of Veldavana Technologies logo -->
+  <defs>
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0B1957;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e3a8a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- V Icon -->
+  <rect x="10" y="10" width="40" height="40" rx="8" fill="url(#blueGradient)"/>
+  <path d="M20 20 L30 35 L40 20" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  
+  <!-- Company Name -->
+  <text x="60" y="25" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#0B1957">
+    Veldavana
+  </text>
+  <text x="60" y="42" font-family="Inter, sans-serif" font-size="12" font-weight="500" fill="rgba(11,25,87,0.7)">
+    Technologies
+  </text>
+</svg>

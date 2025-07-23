@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
+import logoWhite from '@/assets/logo-white.svg';
 
 const Footer = () => {
   const { toast } = useToast();
@@ -109,10 +110,11 @@ const Footer = () => {
               viewport={{ once: true }}
             >
               <div className="flex items-center space-x-2 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-r from-brand-secondary to-brand-secondary/80 rounded-lg flex items-center justify-center">
-                  <span className="text-brand-primary font-bold text-xl">V</span>
-                </div>
-                <span className="text-2xl font-bold">Veldavana Technologies</span>
+                <img
+                  src={logoWhite}
+                  alt="Veldavana Technologies"
+                  className="h-14 w-auto"
+                />
               </div>
               <p className="text-brand-secondary/80 mb-6 leading-relaxed">
                 Transforming ideas into digital reality through innovative technology solutions. 
