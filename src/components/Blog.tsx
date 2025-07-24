@@ -288,6 +288,9 @@ const Blog = () => {
             </motion.div>
           ))}
         </div>
+        )
+        )
+        }
 
         {/* Load More Button */}
         <motion.div
