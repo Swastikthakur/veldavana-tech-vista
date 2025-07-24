@@ -198,11 +198,14 @@ const TechStack = () => {
             specific requirements. Let's discuss the best tech stack for your project.
           </p>
           <motion.button
-            className="bg-brand-primary text-brand-secondary px-8 py-3 rounded-lg font-semibold hover:bg-brand-accent transition-colors duration-300 hover:shadow-lg"
+            className="bg-brand-primary text-brand-secondary px-8 py-3 rounded-lg font-semibold hover:bg-brand-accent transition-all duration-300 hover:shadow-lg group overflow-hidden relative"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
+            <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">
             Discuss Your Project
+            </span>
+            <div className="absolute inset-0 bg-brand-accent transform translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
           </motion.button>
         </motion.div>
       </div>
