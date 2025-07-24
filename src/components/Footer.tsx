@@ -123,15 +123,11 @@ const Footer = () => {
               <div className="space-y-3">
                 <div className="flex items-center">
                   <Phone className="w-4 h-4 mr-3 text-brand-secondary/60" />
-                  <span className="text-sm">+1 (555) 123-4567</span>
+                  <span className="text-sm">+91 9733447070</span>
                 </div>
                 <div className="flex items-center">
                   <Mail className="w-4 h-4 mr-3 text-brand-secondary/60" />
-                  <span className="text-sm">info@veldavana.com</span>
-                </div>
-                <div className="flex items-center">
-                  <MapPin className="w-4 h-4 mr-3 text-brand-secondary/60" />
-                  <span className="text-sm">San Francisco, CA</span>
+                  <span className="text-sm">veldavanatechnologies@gmail.com</span>
                 </div>
               </div>
             </motion.div>

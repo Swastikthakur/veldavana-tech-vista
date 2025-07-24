@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, Clock, MessageCircle } from 'lucide-react';
 import { useState } from 'react';
+import { useEffect } from 'react';
+import { gsap } from 'gsap';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -19,6 +21,11 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  useEffect(() => {
+    // Initialize GSAP
+    gsap.set('.notification', { opacity: 0, y: -50, scale: 0.8 });
+  }, []);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -31,8 +38,23 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    // Send email to veldavanatechnologies@gmail.com
+    try {
+      // In a real implementation, you would use a service like EmailJS or a backend API
+      const emailData = {
+        to: 'veldavanatechnologies@gmail.com',
+        subject: `New Contact Form Submission from ${formData.name}`,
+        body: `
+          Name: ${formData.name}
+          Email: ${formData.email}
+          Phone: ${formData.phone}
+          Company: ${formData.company}
+          Service: ${formData.service}
+          Message: ${formData.message}
+        `
+      };
+      
+      // Simulate email sending
       toast({
         title: "Message Sent Successfully!",
         description: "Thank you for your inquiry. We'll get back to you within 24 hours.",
@@ -46,27 +68,33 @@ const Contact = () => {
         message: ''
       });
       setIsSubmitting(false);
-    }, 1000);
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive"
+      });
+      setIsSubmitting(false);
+    }
+  };
+
+  const showScheduleNotification = () => {
+    gsap.to('.notification', { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.7)" });
+    setTimeout(() => gsap.to('.notification', { opacity: 0, y: -50, scale: 0.8, duration: 0.3 }), 3000);
   };
 
   const contactInfo = [
     {
       icon: Phone,
       title: 'Phone',
-      details: '+1 (555) 123-4567',
+      details: '+91 9733447070',
       subtitle: 'Mon-Fri 9AM-6PM EST'
     },
     {
       icon: Mail,
       title: 'Email',
-      details: 'info@veldavana.com',
+      details: 'veldavanatechnologies@gmail.com',
       subtitle: 'We respond within 24 hours'
-    },
-    {
-      icon: MapPin,
-      title: 'Office',
-      details: 'San Francisco, CA',
-      subtitle: 'Schedule a visit'
     }
   ];
 
@@ -83,6 +111,11 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-20 bg-muted/30">
+      {/* GSAP Notification */}
+      <div className="notification fixed top-20 left-1/2 transform -translate-x-1/2 z-50 bg-brand-primary text-brand-secondary px-6 py-3 rounded-lg shadow-lg">
+        <p className="font-semibold">Fill out the form 'send us a message'</p>
+      </div>
+      
       <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
         <motion.div 
@@ -159,7 +192,7 @@ const Contact = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleInputChange}
-                        placeholder="+1 (555) 000-0000"
+                        placeholder="+91 9876543210"
                         className="w-full"
                       />
                     </div>
@@ -311,10 +344,13 @@ const Contact = () => {
                   Schedule a 30-minute call to discuss your project requirements and get expert advice.
                 </p>
                 <Button
-                  variant="outline"
-                  className="border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-brand-primary"
+                  className="bg-brand-secondary text-brand-primary hover:bg-brand-secondary/90 group overflow-hidden relative"
+                  onClick={showScheduleNotification}
                 >
+                  <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">
                   Schedule Call
+                  </span>
+                  <div className="absolute inset-0 bg-brand-secondary/90 transform translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
                 </Button>
               </CardContent>
             </Card>

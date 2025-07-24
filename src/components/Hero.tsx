@@ -123,8 +123,7 @@ const Hero = () => {
             </Button>
             <Button 
               size="lg" 
-              variant="outline" 
-              className="w-full sm:w-auto border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-brand-primary font-semibold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-lg transition-all duration-300 hover:shadow-xl"
+              className="w-full sm:w-auto bg-brand-primary text-brand-secondary hover:bg-brand-accent font-semibold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-lg transition-all duration-300 hover:shadow-xl group overflow-hidden relative"
               onClick={() => {
                 const projectsSection = document.getElementById('projects');
                 if (projectsSection) {
@@ -132,7 +131,10 @@ const Hero = () => {
                 }
               }}
             >
+              <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">
               View Our Work
+              </span>
+              <div className="absolute inset-0 bg-brand-accent transform translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
             </Button>
           </motion.div>
         </motion.div>
@@ -145,9 +147,9 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
         >
           {[
-            { number: '100+', label: 'Projects Completed' },
-            { number: '50+', label: 'Happy Clients' },
-            { number: '5+', label: 'Years Experience' },
+            { number: '10+', label: 'Projects Completed' },
+            { number: '5+', label: 'Happy Clients' },
+            { number: '3+', label: 'Patents/Research Papers' },
             { number: '24/7', label: 'Support' },
           ].map((stat, index) => (
             <motion.div

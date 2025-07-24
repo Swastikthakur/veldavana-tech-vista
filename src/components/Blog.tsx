@@ -77,12 +77,72 @@ const Blog = () => {
   const categories = ['All', 'AI/ML', 'Web Development', 'Cloud Computing', 'Design', 'Mobile Development', 'DevOps'];
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const filteredPosts = selectedCategory === 'All' 
-    ? blogPosts 
-    : blogPosts.filter(post => post.category === selectedCategory);
-
   const featuredPost = blogPosts.find(post => post.featured);
   const regularPosts = blogPosts.filter(post => !post.featured);
+
+  const handleReadMore = (postId: number) => {
+    // Create a new window/tab with the blog post
+    const newWindow = window.open('', '_blank');
+    if (newWindow) {
+      const post = blogPosts.find(p => p.id === postId);
+      if (post) {
+        newWindow.document.write(`
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>${post.title} - Veldavana Technologies</title>
+            <script src="https://cdn.tailwindcss.com"></script>
+            <style>
+              body { font-family: 'Inter', sans-serif; }
+              .brand-primary { color: #0B1957; }
+              .brand-secondary { color: #FDFCE8; }
+            </style>
+          </head>
+          <body class="bg-gray-50">
+            <div class="max-w-4xl mx-auto px-6 py-12">
+              <button onclick="window.close()" class="mb-8 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                ← Back to Blog
+              </button>
+              <article class="bg-white rounded-lg shadow-lg p-8">
+                <div class="mb-6">
+                  <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full mb-4">
+                    ${post.category}
+                  </span>
+                  <h1 class="text-4xl font-bold text-gray-900 mb-4">${post.title}</h1>
+                  <div class="flex items-center text-gray-600 text-sm">
+                    <span>By ${post.author}</span>
+                    <span class="mx-2">•</span>
+                    <span>${new Date(post.date).toLocaleDateString()}</span>
+                    <span class="mx-2">•</span>
+                    <span>${post.readTime}</span>
+                  </div>
+                </div>
+                <div class="prose max-w-none">
+                  <p class="text-lg text-gray-700 leading-relaxed mb-6">${post.excerpt}</p>
+                  <p class="text-gray-700 leading-relaxed mb-4">
+                    This is the full content of the blog post. In a real implementation, you would fetch the complete article content from your CMS or database.
+                  </p>
+                  <p class="text-gray-700 leading-relaxed mb-4">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                  </p>
+                  <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Key Takeaways</h2>
+                  <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                    <li>Important insight related to ${post.category}</li>
+                    <li>Best practices and recommendations</li>
+                    <li>Future trends and considerations</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+          </body>
+          </html>
+        `);
+        newWindow.document.close();
+      }
+    }
+  };
 
   return (
     <section className="py-20 bg-background">
@@ -104,33 +164,8 @@ const Blog = () => {
           </p>
         </motion.div>
 
-        {/* Category Filter */}
-        <motion.div
-          className="flex flex-wrap justify-center gap-2 mb-12"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          {categories.map((category, index) => (
-            <Button
-              key={index}
-              variant={selectedCategory === category ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedCategory(category)}
-              className={`transition-all duration-300 ${
-                selectedCategory === category 
-                  ? 'bg-brand-primary text-brand-secondary' 
-                  : 'border-brand-primary/20 text-brand-primary hover:bg-brand-primary hover:text-brand-secondary'
-              }`}
-            >
-              {category}
-            </Button>
-          ))}
-        </motion.div>
-
         {/* Featured Post */}
-        {featuredPost && selectedCategory === 'All' && (
+        {featuredPost && (
           <motion.div
             className="mb-16"
             initial={{ opacity: 0, y: 50 }}
@@ -139,8 +174,7 @@ const Blog = () => {
             viewport={{ once: true }}
           >
             <Card className="border-0 shadow-lg overflow-hidden">
-              <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="relative">
+              className="bg-brand-primary text-brand-secondary hover:bg-brand-accent px-8 py-3 group overflow-hidden relative"
                   <div className="w-full h-64 lg:h-full bg-gradient-to-br from-brand-primary/20 to-brand-accent/20 flex items-center justify-center">
                     <span className="text-brand-primary font-semibold">Featured Article Image</span>
                   </div>
@@ -178,6 +212,7 @@ const Blog = () => {
                     <Button 
                       variant="outline" 
                       className="border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-brand-secondary group"
+                      onClick={() => handleReadMore(featuredPost.id)}
                     >
                       Read More
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -191,7 +226,7 @@ const Blog = () => {
 
         {/* Blog Posts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {(selectedCategory === 'All' ? regularPosts : filteredPosts).map((post, index) => (
+          {regularPosts.map((post, index) => (
             <motion.div
               key={post.id}
               initial={{ opacity: 0, y: 50 }}
@@ -200,6 +235,7 @@ const Blog = () => {
               viewport={{ once: true }}
               whileHover={{ y: -5 }}
             >
+              <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">
               <Card className="h-full border-0 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
                 <div className="relative">
                   <div className="w-full h-48 bg-gradient-to-br from-brand-primary/20 to-brand-accent/20 flex items-center justify-center">
@@ -241,6 +277,7 @@ const Blog = () => {
                       variant="ghost" 
                       size="sm" 
                       className="text-brand-primary hover:text-brand-secondary hover:bg-brand-primary p-0 h-auto group"
+                      onClick={() => handleReadMore(post.id)}
                     >
                       Read More
                       <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
@@ -265,31 +302,11 @@ const Blog = () => {
             className="border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-brand-secondary px-8 py-3"
           >
             Load More Articles
+              </span>
+              <div className="absolute inset-0 bg-brand-accent transform translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
           </Button>
         </motion.div>
 
-        {/* Newsletter Signup */}
-        <motion.div
-          className="mt-20 bg-gradient-to-r from-brand-primary to-brand-accent rounded-lg p-8 text-center"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-2xl font-bold text-brand-secondary mb-4">
-            Never Miss an Update
-          </h3>
-          <p className="text-brand-secondary/90 mb-6 max-w-2xl mx-auto">
-            Subscribe to our newsletter and get the latest articles, tutorials, and industry insights 
-            delivered straight to your inbox.
-          </p>
-          <Button 
-            variant="outline" 
-            className="border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-brand-primary"
-          >
-            Subscribe to Newsletter
-          </Button>
-        </motion.div>
       </div>
     </section>
   );

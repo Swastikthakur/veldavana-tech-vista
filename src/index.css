@@ -61,6 +61,7 @@ All colors MUST be HSL.
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --slide-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     /* Header transitions */
     --header-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -130,5 +131,27 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Global button hover slide effect */
+  .btn-slide {
+    @apply relative overflow-hidden;
+  }
+
+  .btn-slide::before {
+    content: '';
+    @apply absolute inset-0 bg-brand-accent transform translate-x-full transition-transform duration-300 ease-out;
+  }
+
+  .btn-slide:hover::before {
+    @apply translate-x-0;
+  }
+
+  .btn-slide > span {
+    @apply relative z-10 transition-transform duration-300;
+  }
+
+  .btn-slide:hover > span {
+    @apply translate-x-1;
   }
 }
