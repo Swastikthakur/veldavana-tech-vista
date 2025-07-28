@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
-import logoWhite from '@/assets/logo-white.svg';
+import logoWhite from '@/assets/white-icon.png';
 
 const Footer = () => {
   const { toast } = useToast();
@@ -61,8 +61,8 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-brand-primary text-brand-secondary">
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
+    <footer className="bg-brand-primary text-brand-secondary pt-24 lg:pt-32 pb-12">
+      <div className="w-full max-w-full mx-auto px-8 md:px-16 lg:px-24">
         {/* Newsletter Section */}
         <motion.div
           className="py-8 sm:py-12 border-b border-brand-secondary/20"
@@ -100,7 +100,7 @@ const Footer = () => {
 
         {/* Main Footer Content */}
         <div className="py-8 sm:py-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16 mb-24">
             {/* Company Info */}
             <motion.div
               className="lg:col-span-2"
@@ -109,25 +109,25 @@ const Footer = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <div className="flex items-center space-x-2 mb-6">
+              <div className="flex items-center space-x-2 mb-8">
                 <img
                   src={logoWhite}
                   alt="Veldavana Technologies"
-                  className="h-14 w-auto"
+                  className="h-24 w-auto"
                 />
               </div>
-              <p className="text-brand-secondary/80 mb-6 leading-relaxed">
+              <p className="text-brand-secondary/80 mb-6 leading-relaxed text-lg lg:text-xl">
                 Transforming ideas into digital reality through innovative technology solutions. 
                 We partner with businesses to drive digital transformation and achieve sustainable growth.
               </p>
-              <div className="space-y-3">
+              <div className="space-y-5">
                 <div className="flex items-center">
-                  <Phone className="w-4 h-4 mr-3 text-brand-secondary/60" />
-                  <span className="text-sm">+91 9733447070</span>
+                  <Phone className="w-5 h-5 mr-5 text-brand-secondary/60" />
+                  <span className="text-base lg:text-lg">+91 9733447070</span>
                 </div>
                 <div className="flex items-center">
-                  <Mail className="w-4 h-4 mr-3 text-brand-secondary/60" />
-                  <span className="text-sm">veldavanatechnologies@gmail.com</span>
+                  <Mail className="w-5 h-5 mr-5 text-brand-secondary/60" />
+                  <span className="text-base lg:text-lg">info@veldavnatechnologies.com</span>
                 </div>
               </div>
             </motion.div>
@@ -139,13 +139,13 @@ const Footer = () => {
               transition={{ duration: 0.8, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <h4 className="font-bold text-lg mb-6">Services</h4>
-              <ul className="space-y-3">
+              <h4 className="font-bold text-xl lg:text-2xl mb-6">Services</h4>
+              <ul className="space-y-4">
                 {footerLinks.services.map((link, index) => (
                   <li key={index}>
                     <a
                       href={link.href}
-                      className="text-brand-secondary/80 hover:text-brand-secondary transition-colors duration-200 text-sm"
+                      className="text-brand-secondary/80 hover:text-brand-secondary transition-colors duration-200 text-base lg:text-lg"
                     >
                       {link.name}
                     </a>
@@ -154,61 +154,19 @@ const Footer = () => {
               </ul>
             </motion.div>
 
-            {/* Company */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <h4 className="font-bold text-lg mb-6">Company</h4>
-              <ul className="space-y-3">
-                {footerLinks.company.map((link, index) => (
-                  <li key={index}>
-                    <a
-                      href={link.href}
-                      className="text-brand-secondary/80 hover:text-brand-secondary transition-colors duration-200 text-sm"
-                    >
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
 
-            {/* Resources */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              <h4 className="font-bold text-lg mb-6">Resources</h4>
-              <ul className="space-y-3">
-                {footerLinks.resources.map((link, index) => (
-                  <li key={index}>
-                    <a
-                      href={link.href}
-                      className="text-brand-secondary/80 hover:text-brand-secondary transition-colors duration-200 text-sm"
-                    >
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
           </div>
         </div>
 
         {/* Bottom Section */}
-        <div className="py-6 sm:py-8 border-t border-brand-secondary/20">
+        <div className="py-10 sm:py-12 border-t border-brand-secondary/20">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="text-xs sm:text-sm text-brand-secondary/60 mb-4 sm:mb-0 text-center sm:text-left"
+              className="text-base lg:text-lg text-brand-secondary/60 mb-6 sm:mb-0 text-center sm:text-left"
             >
               © {new Date().getFullYear()} Veldavana Technologies. All rights reserved.
             </motion.div>
@@ -218,7 +176,7 @@ const Footer = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="flex space-x-4"
+              className="flex space-x-6"
             >
               {socialLinks.map((social, index) => (
                 <a
@@ -227,7 +185,7 @@ const Footer = () => {
                   aria-label={social.label}
                   className="w-10 h-10 bg-brand-secondary/10 rounded-full flex items-center justify-center hover:bg-brand-secondary/20 transition-colors duration-200 group"
                 >
-                  <social.icon className="w-4 h-4 text-brand-secondary/60 group-hover:text-brand-secondary transition-colors duration-200" />
+                  <social.icon className="w-6 h-6 text-brand-secondary/60 group-hover:text-brand-secondary transition-colors duration-200" />
                 </a>
               ))}
             </motion.div>

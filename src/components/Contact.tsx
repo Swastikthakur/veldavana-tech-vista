@@ -38,11 +38,11 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Send email to veldavanatechnologies@gmail.com
+    // Send email to veldavnatechnologies.com
     try {
       // In a real implementation, you would use a service like EmailJS or a backend API
       const emailData = {
-        to: 'veldavanatechnologies@gmail.com',
+        to: 'info@veldavnatechnologies.com',
         subject: `New Contact Form Submission from ${formData.name}`,
         body: `
           Name: ${formData.name}
@@ -93,7 +93,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email',
-      details: 'veldavanatechnologies@gmail.com',
+      details: 'info@veldavnatechnologies.com',
       subtitle: 'We respond within 24 hours'
     }
   ];
@@ -110,13 +110,13 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-muted/30">
+    <section id="contact" className="py-24 lg:py-32 bg-muted/30">
       {/* GSAP Notification */}
-      <div className="notification fixed top-20 left-1/2 transform -translate-x-1/2 z-50 bg-brand-primary text-brand-secondary px-6 py-3 rounded-lg shadow-lg">
-        <p className="font-semibold">Fill out the form 'send us a message'</p>
+      <div className="notification fixed top-20 left-1/2 transform -translate-x-1/2 z-50 bg-brand-primary text-brand-secondary px-8 py-4 rounded-xl shadow-lg">
+        <p className="font-semibold text-lg">Fill out the form 'send us a message'</p>
       </div>
       
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
+      <div className="w-full max-w-full mx-auto px-8 md:px-16 lg:px-24">
         {/* Header */}
         <motion.div 
           className="text-center mb-16 sm:mb-20"
@@ -125,16 +125,16 @@ const Contact = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 sm:mb-8">
             Get In Touch
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-5xl mx-auto">
             Ready to start your project? We'd love to hear from you. 
             Send us a message and we'll respond as soon as possible.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-24">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -144,16 +144,16 @@ const Contact = () => {
           >
             <Card className="border-0 shadow-lg">
               <CardHeader>
-                <CardTitle className="text-2xl font-bold text-foreground flex items-center">
-                  <MessageCircle className="w-6 h-6 mr-3 text-brand-primary" />
+                <CardTitle className="text-3xl font-bold text-foreground flex items-center">
+                  <MessageCircle className="w-8 h-8 mr-4 text-brand-primary" />
                   Send us a message
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-8">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
+                      <label className="block text-base lg:text-lg font-medium text-foreground mb-3">
                         Name *
                       </label>
                       <Input
@@ -167,7 +167,7 @@ const Contact = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
+                      <label className="block text-base lg:text-lg font-medium text-foreground mb-3">
                         Email *
                       </label>
                       <Input
@@ -184,7 +184,7 @@ const Contact = () => {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
+                      <label className="block text-base lg:text-lg font-medium text-foreground mb-3">
                         Phone
                       </label>
                       <Input
@@ -197,7 +197,7 @@ const Contact = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
+                      <label className="block text-base lg:text-lg font-medium text-foreground mb-3">
                         Company
                       </label>
                       <Input
@@ -212,14 +212,14 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
+                    <label className="block text-base lg:text-lg font-medium text-foreground mb-3">
                       Service Interested In
                     </label>
                     <select
                       name="service"
                       value={formData.service}
                       onChange={handleInputChange}
-                      className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-brand-primary bg-background"
+                      className="w-full px-4 py-3 text-base border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary bg-background"
                     >
                       <option value="">Select a service</option>
                       {services.map((service, index) => (
@@ -231,7 +231,7 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
+                    <label className="block text-base lg:text-lg font-medium text-foreground mb-3">
                       Message *
                     </label>
                     <Textarea
@@ -248,14 +248,14 @@ const Contact = () => {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-brand-primary hover:bg-brand-accent text-brand-secondary font-semibold py-3 rounded-lg transition-colors duration-300"
+                    className="w-full bg-brand-primary hover:bg-brand-accent text-brand-secondary font-bold py-5 px-8 text-lg rounded-xl transition-colors duration-300 hover:shadow-xl"
                   >
                     {isSubmitting ? (
                       'Sending...'
                     ) : (
                       <>
                         Send Message
-                        <Send className="w-4 h-4 ml-2" />
+                        <Send className="w-5 h-5 ml-3" />
                       </>
                     )}
                   </Button>
@@ -273,10 +273,10 @@ const Contact = () => {
             className="space-y-6"
           >
             <div>
-              <h3 className="text-2xl font-bold text-foreground mb-6">
+              <h3 className="text-3xl lg:text-4xl font-bold text-foreground mb-8">
                 Let's Start a Conversation
               </h3>
-              <p className="text-muted-foreground mb-8 leading-relaxed">
+              <p className="text-lg lg:text-xl text-muted-foreground mb-10 leading-relaxed">
                 We're here to help you bring your ideas to life. Whether you have a 
                 specific project in mind or just want to explore possibilities, 
                 we'd love to hear from you.
@@ -296,17 +296,17 @@ const Contact = () => {
                   <Card className="border-0 shadow-sm hover:shadow-md transition-shadow duration-300">
                     <CardContent className="p-6">
                       <div className="flex items-start">
-                        <div className="w-12 h-12 bg-gradient-to-br from-brand-primary to-brand-accent rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                          <info.icon className="w-6 h-6 text-brand-secondary" />
+                        <div className="w-16 h-16 bg-gradient-to-br from-brand-primary to-brand-accent rounded-lg flex items-center justify-center mr-6 flex-shrink-0">
+                          <info.icon className="w-8 h-8 text-brand-secondary" />
                         </div>
                         <div>
-                          <h4 className="font-semibold text-foreground mb-1">
+                          <h4 className="font-semibold text-xl text-foreground mb-2">
                             {info.title}
                           </h4>
-                          <p className="text-brand-primary font-medium mb-1">
+                          <p className="text-brand-primary font-medium text-lg mb-2">
                             {info.details}
                           </p>
-                          <p className="text-sm text-muted-foreground">
+                          <p className="text-base text-muted-foreground">
                             {info.subtitle}
                           </p>
                         </div>
@@ -321,12 +321,12 @@ const Contact = () => {
             <Card className="border-0 shadow-sm bg-brand-primary/5">
               <CardContent className="p-6">
                 <div className="flex items-center">
-                  <Clock className="w-8 h-8 text-brand-primary mr-4" />
+                  <Clock className="w-10 h-10 text-brand-primary mr-6" />
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">
+                    <h4 className="font-semibold text-xl text-foreground mb-2">
                       Quick Response Time
                     </h4>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-base lg:text-lg text-muted-foreground">
                       We typically respond to inquiries within 2-4 hours during business hours.
                     </p>
                   </div>
@@ -337,14 +337,14 @@ const Contact = () => {
             {/* Free Consultation CTA */}
             <Card className="border-0 shadow-sm bg-gradient-to-r from-brand-primary to-brand-accent">
               <CardContent className="p-6 text-center">
-                <h4 className="font-bold text-brand-secondary mb-2">
+                <h4 className="font-bold text-brand-secondary text-xl lg:text-2xl mb-3">
                   Free Consultation Available
                 </h4>
-                <p className="text-brand-secondary/90 text-sm mb-4">
+                <p className="text-brand-secondary/90 text-base lg:text-lg mb-6">
                   Schedule a 30-minute call to discuss your project requirements and get expert advice.
                 </p>
                 <Button
-                  className="bg-brand-secondary text-brand-primary hover:bg-brand-secondary/90 group overflow-hidden relative"
+                  className="bg-brand-secondary text-brand-primary hover:bg-brand-secondary/90 group overflow-hidden relative text-lg font-bold px-8 py-4 rounded-xl"
                   onClick={showScheduleNotification}
                 >
                   <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">

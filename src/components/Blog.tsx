@@ -145,46 +145,65 @@ const Blog = () => {
   };
 
   return (
-    <section className="py-20 bg-background">
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
+    <section className="pt-24 pb-32 bg-background">
+      <div className="w-full max-w-full mx-auto px-6 md:px-12 lg:px-24">
         {/* Header */}
         <motion.div 
-          className="text-center mb-16"
+          className="mb-24 max-w-7xl mx-auto"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
-            Latest Insights & Articles
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Stay updated with the latest trends, tutorials, and insights from our team of experts 
-            in technology and digital transformation.
-          </p>
+          <div className="md:flex md:justify-between md:items-end">
+            <div className="md:max-w-3xl">
+              <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-8">
+                Latest Insights & Articles
+              </h2>
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                Stay updated with the latest trends, tutorials, and insights from our team of experts 
+                in technology and digital transformation.
+              </p>
+            </div>
+            <div className="hidden md:flex mt-8 md:mt-0">
+              <div className="flex gap-4 flex-wrap">
+                {categories.map(category => (
+                  <Button 
+                    key={category}
+                    variant={selectedCategory === category ? "default" : "outline"}
+                    className={selectedCategory === category ? "bg-brand-primary text-white" : "text-brand-primary"}
+                    onClick={() => setSelectedCategory(category)}
+                  >
+                    {category}
+                  </Button>
+                ))}
+              </div>
+            </div>
+          </div>
         </motion.div>
 
         {/* Featured Post */}
         {featuredPost && (
           <motion.div
-            className="mb-16"
+            className="mb-24 max-w-7xl mx-auto"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <Card className="border-0 shadow-lg overflow-hidden">
-              className="bg-brand-primary text-brand-secondary hover:bg-brand-accent px-8 py-3 group overflow-hidden relative"
-                  <div className="w-full h-64 lg:h-full bg-gradient-to-br from-brand-primary/20 to-brand-accent/20 flex items-center justify-center">
+            <Card className="border-0 shadow-xl overflow-hidden rounded-2xl">
+              <div className="lg:grid lg:grid-cols-2 lg:min-h-[500px]">
+                <div className="relative overflow-hidden">
+                  <div className="w-full h-80 lg:h-full bg-gradient-to-br from-brand-primary/20 to-brand-accent/20 flex items-center justify-center">
                     <span className="text-brand-primary font-semibold">Featured Article Image</span>
                   </div>
-                  <div className="absolute top-4 left-4 bg-brand-primary text-brand-secondary px-3 py-1 rounded-full text-sm font-medium">
+                  <div className="absolute top-6 left-6 bg-brand-primary text-brand-secondary px-4 py-2 rounded-full text-sm font-medium">
                     Featured
                   </div>
                 </div>
-                <div className="p-8 flex flex-col justify-center">
-                  <div className="flex items-center gap-4 mb-4">
-                    <span className="inline-block px-3 py-1 bg-brand-primary/10 text-brand-primary text-sm rounded-full">
+                <div className="p-8 lg:p-12 flex flex-col justify-center">
+                  <div className="flex items-center gap-4 mb-6">
+                    <span className="inline-block px-4 py-1.5 bg-brand-primary/10 text-brand-primary text-sm rounded-full font-medium">
                       {featuredPost.category}
                     </span>
                     <div className="flex items-center text-sm text-muted-foreground">
@@ -192,30 +211,30 @@ const Blog = () => {
                       {new Date(featuredPost.date).toLocaleDateString()}
                     </div>
                   </div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                  <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
                     {featuredPost.title}
                   </h3>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                  <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                     {featuredPost.excerpt}
                   </p>
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
                     <div className="flex items-center">
-                      <User className="w-4 h-4 mr-2 text-muted-foreground" />
+                      <User className="w-5 h-5 mr-2 text-muted-foreground" />
                       <span className="text-sm text-muted-foreground mr-4">
                         {featuredPost.author}
                       </span>
-                      <Clock className="w-4 h-4 mr-1 text-muted-foreground" />
+                      <Clock className="w-5 h-5 mr-1 text-muted-foreground" />
                       <span className="text-sm text-muted-foreground">
                         {featuredPost.readTime}
                       </span>
                     </div>
                     <Button 
                       variant="outline" 
-                      className="border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-brand-secondary group"
+                      className="border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-brand-secondary group px-6 py-2.5 text-base"
                       onClick={() => handleReadMore(featuredPost.id)}
                     >
                       Read More
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </div>
                 </div>
@@ -225,7 +244,8 @@ const Blog = () => {
         )}
 
         {/* Blog Posts Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
           {regularPosts.map((post, index) => (
             <motion.div
               key={post.id}
@@ -235,66 +255,63 @@ const Blog = () => {
               viewport={{ once: true }}
               whileHover={{ y: -5 }}
             >
-              <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">
-              <Card className="h-full border-0 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+              <Card className="h-full border-0 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group rounded-xl">
                 <div className="relative">
-                  <div className="w-full h-48 bg-gradient-to-br from-brand-primary/20 to-brand-accent/20 flex items-center justify-center">
+                  <div className="w-full h-56 bg-gradient-to-br from-brand-primary/20 to-brand-accent/20 flex items-center justify-center">
                     <span className="text-brand-primary font-semibold text-center">
                       {post.category} Article
                     </span>
                   </div>
-                  <div className="absolute top-4 left-4 bg-brand-primary/90 text-brand-secondary px-2 py-1 rounded text-xs font-medium">
+                  <div className="absolute top-5 left-5 bg-brand-primary/90 text-brand-secondary px-3 py-1.5 rounded-full text-xs font-medium">
                     {post.category}
                   </div>
                 </div>
-                <CardHeader className="pb-2">
-                  <div className="flex items-center gap-4 mb-2">
+                <CardHeader className="pt-6 pb-2 px-6">
+                  <div className="flex items-center gap-4 mb-3">
                     <div className="flex items-center text-xs text-muted-foreground">
-                      <Calendar className="w-3 h-3 mr-1" />
+                      <Calendar className="w-4 h-4 mr-1" />
                       {new Date(post.date).toLocaleDateString()}
                     </div>
                     <div className="flex items-center text-xs text-muted-foreground">
-                      <Clock className="w-3 h-3 mr-1" />
+                      <Clock className="w-4 h-4 mr-1" />
                       {post.readTime}
                     </div>
                   </div>
-                  <CardTitle className="text-lg font-bold text-foreground line-clamp-2 group-hover:text-brand-primary transition-colors">
+                  <CardTitle className="text-xl font-bold text-foreground line-clamp-2 group-hover:text-brand-primary transition-colors">
                     {post.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground text-sm line-clamp-3 mb-4">
+                <CardContent className="px-6 pb-6">
+                  <p className="text-muted-foreground text-sm line-clamp-3 mb-6">
                     {post.excerpt}
                   </p>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
-                      <User className="w-3 h-3 mr-1 text-muted-foreground" />
-                      <span className="text-xs text-muted-foreground">
+                      <User className="w-4 h-4 mr-1 text-muted-foreground" />
+                      <span className="text-sm text-muted-foreground">
                         {post.author}
                       </span>
                     </div>
                     <Button 
                       variant="ghost" 
                       size="sm" 
-                      className="text-brand-primary hover:text-brand-secondary hover:bg-brand-primary p-0 h-auto group"
+                      className="text-brand-primary hover:text-brand-secondary hover:bg-brand-primary px-3 py-1 h-auto group"
                       onClick={() => handleReadMore(post.id)}
                     >
                       Read More
-                      <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </div>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
+          </div>
         </div>
-        )
-        )
-        }
 
         {/* Load More Button */}
         <motion.div
-          className="text-center mt-12"
+          className="text-center mt-20 max-w-7xl mx-auto"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -302,11 +319,10 @@ const Blog = () => {
         >
           <Button 
             variant="outline" 
-            className="border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-brand-secondary px-8 py-3"
+            className="border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-brand-secondary px-10 py-4 text-lg group relative overflow-hidden"
           >
-            Load More Articles
-              </span>
-              <div className="absolute inset-0 bg-brand-accent transform translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
+            <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">Load More Articles</span>
+            <div className="absolute inset-0 bg-brand-accent transform translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
           </Button>
         </motion.div>
 

@@ -28,12 +28,13 @@ const Testimonials = () => {
     },
     {
       id: 3,
-      name: 'More Voices',
-      role: 'Loading...',
-      company: 'Trusted by Clients',
-      content: 'Trusted by Clients, More Voices Loading...',
-      rating: 5,
-      image: '/api/placeholder/80/80'
+      name: '',
+      role: '',
+      company: '',
+      content: '',
+      rating: 0,
+      image: '',
+      isCTA: true
     }
   ];
 
@@ -52,8 +53,8 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-20 bg-muted/30">
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
+    <section className="py-24 lg:py-32 bg-muted/30">
+      <div className="w-full max-w-full mx-auto px-8 md:px-16 lg:px-24">
         {/* Header */}
         <motion.div 
           className="text-center mb-16"
@@ -62,17 +63,17 @@ const Testimonials = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-8">
             What Our Clients Say
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-5xl mx-auto">
             Don't just take our word for it. Here's what our clients have to say about 
             working with Veldavana Technologies.
           </p>
         </motion.div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16 mb-16">
           {currentTestimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.id}
@@ -81,48 +82,73 @@ const Testimonials = () => {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               className="relative"
             >
-              <Card className="h-full border-0 bg-card shadow-sm hover:shadow-lg transition-all duration-300 p-6 relative overflow-hidden">
-                {/* Quote Icon */}
-                <div className="absolute top-4 right-4 text-brand-primary/20">
-                  <Quote size={40} />
-                </div>
-                
-                {/* Rating */}
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star 
-                      key={i} 
-                      className="w-4 h-4 fill-yellow-400 text-yellow-400" 
-                    />
-                  ))}
-                </div>
-
-                {/* Content */}
-                <CardContent className="p-0">
-                  <p className="text-muted-foreground mb-6 leading-relaxed italic">
-                    "{testimonial.content}"
-                  </p>
-                  
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 bg-gradient-to-br from-brand-primary to-brand-accent rounded-full flex items-center justify-center mr-4">
-                      <span className="text-brand-secondary font-semibold">
-                        {testimonial.name.split(' ').map(n => n[0]).join('')}
-                      </span>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">
-                        {testimonial.name}
-                      </h4>
-                      <p className="text-sm text-muted-foreground">
-                        {testimonial.role}
+              {testimonial.isCTA ? (
+                <a href="#contact" className="block h-full">
+                  <Card 
+                    className="h-full border-0 bg-blue-900 shadow-lg hover:shadow-xl transition-all duration-300 p-8 lg:p-10 relative overflow-hidden rounded-xl hover:scale-105 hover:brightness-110 cursor-pointer"
+                  >
+                    <CardContent className="p-0 flex flex-col items-center justify-center h-full">
+                      {/* Plus Icon */}
+                      <div className="text-white mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                        </svg>
+                      </div>
+                      
+                      {/* CTA Text */}
+                      <h3 className="text-white text-2xl lg:text-3xl font-bold mb-3 text-center">
+                        Be the Next Happy Client
+                      </h3>
+                      <p className="text-white/70 text-lg text-center">
+                        Share your journey with us
                       </p>
-                      <p className="text-sm text-brand-primary font-medium">
-                        {testimonial.company}
-                      </p>
-                    </div>
+                    </CardContent>
+                  </Card>
+                </a>
+              ) : (
+                <Card className="h-full border-0 bg-card shadow-sm hover:shadow-lg transition-all duration-300 p-8 lg:p-10 relative overflow-hidden">
+                  {/* Quote Icon */}
+                  <div className="absolute top-6 right-6 text-brand-primary/20">
+                    <Quote size={50} />
                   </div>
-                </CardContent>
-              </Card>
+                  
+                  {/* Rating */}
+                  <div className="flex items-center mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star 
+                        key={i} 
+                        className="w-5 h-5 lg:w-6 lg:h-6 fill-yellow-400 text-yellow-400" 
+                      />
+                    ))}
+                  </div>
+
+                  {/* Content */}
+                  <CardContent className="p-0">
+                    <p className="text-muted-foreground text-lg lg:text-xl mb-8 leading-relaxed italic">
+                      "{testimonial.content}"
+                    </p>
+                    
+                    <div className="flex items-center">
+                      <div className="w-16 h-16 bg-gradient-to-br from-brand-primary to-brand-accent rounded-full flex items-center justify-center mr-6 flex-shrink-0">
+                        <span className="text-brand-secondary font-semibold text-lg">
+                          {testimonial.name.split(' ').map(n => n[0]).join('')}
+                        </span>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-foreground text-lg lg:text-xl">
+                          {testimonial.name}
+                        </h4>
+                        <p className="text-base lg:text-lg text-muted-foreground">
+                          {testimonial.role}
+                        </p>
+                        <p className="text-base lg:text-lg text-brand-primary font-medium">
+                          {testimonial.company}
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
             </motion.div>
           ))}
         </div>
@@ -168,14 +194,14 @@ const Testimonials = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-bold text-foreground mb-4">
+          <h3 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
             Ready to Join Our Success Stories?
           </h3>
-          <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-lg lg:text-xl text-muted-foreground mb-10 max-w-3xl mx-auto">
             Let's discuss how we can help transform your business with our innovative solutions.
           </p>
           <motion.button
-            className="bg-brand-primary text-brand-secondary px-8 py-3 rounded-lg font-semibold hover:bg-brand-accent transition-all duration-300 hover:shadow-lg group overflow-hidden relative"
+            className="bg-brand-primary text-brand-secondary px-10 py-5 rounded-xl text-lg lg:text-xl font-bold hover:bg-brand-accent transition-all duration-300 hover:shadow-lg group overflow-hidden relative"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

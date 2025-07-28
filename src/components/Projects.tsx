@@ -45,8 +45,8 @@ const Projects = () => {
   const project = projects[currentProject];
 
   return (
-    <section id="projects" className="py-20 bg-background">
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
+    <section id="projects" className="py-24 lg:py-32 bg-background">
+      <div className="w-full max-w-full mx-auto px-8 md:px-16 lg:px-24">
         {/* Header */}
         <motion.div 
           className="text-center mb-16 sm:mb-20"
@@ -55,10 +55,10 @@ const Projects = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 sm:mb-8">
             Featured Projects
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-5xl mx-auto">
             Explore our portfolio of successful projects that showcase our expertise in delivering 
             innovative solutions across various industries.
           </p>
@@ -72,12 +72,12 @@ const Projects = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
             transition={{ duration: 0.5 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center"
           >
             {/* Project Image */}
             <div className="relative group flex justify-center">
-              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-muted/30 to-muted/10 p-8 shadow-2xl">
-                <div className="w-80 h-[600px] flex items-center justify-center">
+              <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-muted/30 to-muted/10 p-10 shadow-2xl">
+                <div className="w-96 h-[650px] flex items-center justify-center">
                   <img 
                     src={project.images[0]} 
                     alt={project.title}
@@ -91,23 +91,23 @@ const Projects = () => {
             {/* Project Details */}
             <div className="space-y-6">
               <div>
-                <span className="inline-block px-3 py-1 bg-brand-primary/10 text-brand-primary text-sm rounded-full mb-4">
+                <span className="inline-block px-4 py-2 bg-brand-primary/10 text-brand-primary text-base rounded-full mb-6">
                   {project.category}
                 </span>
-                <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
                   {project.title}
                 </h3>
-                <p className="text-muted-foreground text-lg leading-relaxed">
+                <p className="text-muted-foreground text-xl lg:text-2xl leading-relaxed">
                   {project.description}
                 </p>
               </div>
 
               <div>
-                <h4 className="text-lg font-semibold text-foreground mb-3">Key Features:</h4>
-                <ul className="space-y-2">
+                <h4 className="text-xl lg:text-2xl font-semibold text-foreground mb-4">Key Features:</h4>
+                <ul className="space-y-3">
                   {project.features.map((feature, index) => (
-                    <li key={index} className="flex items-center text-muted-foreground">
-                      <div className="w-2 h-2 bg-brand-primary rounded-full mr-3 flex-shrink-0"></div>
+                    <li key={index} className="flex items-center text-muted-foreground text-lg lg:text-xl">
+                      <div className="w-3 h-3 bg-brand-primary rounded-full mr-4 flex-shrink-0"></div>
                       {feature}
                     </li>
                   ))}
@@ -115,12 +115,12 @@ const Projects = () => {
               </div>
 
               <div>
-                <h4 className="text-lg font-semibold text-foreground mb-3">Technologies Used:</h4>
+                <h4 className="text-xl lg:text-2xl font-semibold text-foreground mb-4">Technologies Used:</h4>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech, index) => (
                     <span 
                       key={index}
-                      className="px-3 py-1 bg-brand-primary/10 text-brand-primary text-sm rounded-full"
+                      className="px-4 py-2 bg-brand-primary/10 text-brand-primary text-base lg:text-lg rounded-full"
                     >
                       {tech}
                     </span>
@@ -128,12 +128,12 @@ const Projects = () => {
                 </div>
               </div>
 
-              <div className="bg-muted/50 rounded-lg p-6">
-                <h4 className="text-lg font-semibold text-foreground mb-3">Results Achieved:</h4>
+              <div className="bg-muted/50 rounded-xl p-8">
+                <h4 className="text-xl lg:text-2xl font-semibold text-foreground mb-4">Results Achieved:</h4>
                 <div className="space-y-2">
                   {project.results.map((result, index) => (
-                    <div key={index} className="flex items-center text-muted-foreground">
-                      <div className="w-2 h-2 bg-brand-success rounded-full mr-3 flex-shrink-0"></div>
+                    <div key={index} className="flex items-center text-muted-foreground text-lg lg:text-xl">
+                      <div className="w-3 h-3 bg-brand-success rounded-full mr-4 flex-shrink-0"></div>
                       {result}
                     </div>
                   ))}
@@ -142,13 +142,13 @@ const Projects = () => {
 
               <div className="flex gap-4">
                 <Link to={project.route || '#'}>
-                  <Button className="bg-brand-primary hover:bg-brand-accent text-brand-secondary">
-                    <ExternalLink className="w-4 h-4 mr-2" />
+                  <Button className="bg-brand-primary hover:bg-brand-accent text-brand-secondary text-lg py-6 px-8 rounded-xl font-bold">
+                    <ExternalLink className="w-5 h-5 mr-3" />
                     View Project Details
                   </Button>
                 </Link>
-                <Button variant="outline" className="border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-brand-secondary">
-                  <Github className="w-4 h-4 mr-2" />
+                <Button variant="outline" className="border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-brand-secondary text-lg py-6 px-8 rounded-xl font-bold">
+                  <Github className="w-5 h-5 mr-3" />
                   Case Study
                 </Button>
               </div>

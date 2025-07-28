@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import logoWhite from '@/assets/logo-white.svg';
-import logoBlue from '@/assets/logo-blue.svg';
+import logoWhite from '@/assets/white-icon.png';
+import logoBlue from '@/assets/blue-icon.png';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,24 +21,36 @@ const Header = () => {
   const navItems = [
     { name: 'Home', href: '#home' },
     { name: 'Services', href: '#services' },
-    { name: 'About', href: '#about' },
+    { name: 'About', href: '/about', isPage: true },
     { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' },
   ];
+  
+  const scrollToSection = (href: string, isPage: boolean = false) => {
+    if (isPage) {
+      window.location.href = href;
+      return;
+    }
+    
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-background/95 backdrop-blur-md shadow-sm border-b border-border/20' 
+          ? 'bg-background/95 backdrop-blur-md shadow-md border-b border-border/20' 
           : 'bg-brand-primary/95 backdrop-blur-md'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
-        <div className="flex items-center justify-between h-16">
+      <div className="w-full max-w-full mx-auto px-8 md:px-16 lg:px-24">
+        <div className="flex items-center justify-between h-20 md:h-24">
           {/* Logo */}
           <motion.div
             className="flex items-center space-x-3"
@@ -49,7 +61,7 @@ const Header = () => {
             <motion.img
               src={isScrolled ? logoBlue : logoWhite}
               alt="Veldavana Technologies"
-              className="h-12 w-auto transition-all duration-300"
+              className="h-24 md:h-28 w-auto transition-all duration-300"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
@@ -57,22 +69,26 @@ const Header = () => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-10">
             {navItems.map((item, index) => (
               <motion.a
                 key={item.name}
                 href={item.href}
-                className={`transition-all duration-300 relative group font-medium ${
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.href, item.isPage);
+                }}
+                className={`transition-all duration-300 relative group font-medium text-lg lg:text-xl ${
                   isScrolled 
                     ? 'text-brand-primary hover:text-brand-accent' 
                     : 'text-brand-secondary hover:text-brand-secondary/80'
-                }`}
+                } cursor-pointer`}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
               >
                 {item.name}
-                <span className={`absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
+                <span className={`absolute bottom-0 left-0 w-0 h-1 transition-all duration-300 group-hover:w-full ${
                   isScrolled ? 'bg-brand-primary' : 'bg-brand-secondary'
                 }`}></span>
               </motion.a>
@@ -88,11 +104,12 @@ const Header = () => {
           >
             <Button 
               variant="default" 
-              className={`font-semibold px-6 py-2 rounded-lg transition-all duration-300 hover:shadow-lg ${
+              className={`font-bold px-8 py-4 text-lg rounded-xl transition-all duration-300 hover:shadow-xl ${
                 isScrolled
                   ? 'bg-brand-primary hover:bg-brand-accent text-brand-secondary'
                   : 'bg-brand-secondary hover:bg-brand-secondary/90 text-brand-primary'
               }`}
+              onClick={() => scrollToSection('#contact')}
             >
               Get Started
             </Button>
@@ -107,7 +124,7 @@ const Header = () => {
             }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
           </button>
         </div>
 
@@ -125,20 +142,24 @@ const Header = () => {
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <nav className="flex flex-col space-y-4 p-4">
+              <nav className="flex flex-col space-y-6 p-6">
                 {navItems.map((item, index) => (
                   <motion.a
                     key={item.name}
                     href={item.href}
-                    className={`transition-colors duration-300 py-3 block font-medium ${
+                    className={`transition-colors duration-300 py-4 block font-medium text-xl ${
                       isScrolled 
                         ? 'text-brand-primary hover:text-brand-accent' 
                         : 'text-brand-secondary hover:text-brand-secondary/80'
-                    }`}
+                    } cursor-pointer`}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: 0.1 * index }}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(item.href, item.isPage);
+                      setIsMobileMenuOpen(false);
+                    }}
                   >
                     {item.name}
                   </motion.a>
@@ -150,11 +171,15 @@ const Header = () => {
                 >
                   <Button 
                     variant="default" 
-                    className={`w-full font-semibold py-3 rounded-lg transition-all duration-300 ${
+                    className={`w-full font-bold py-5 text-xl rounded-xl transition-all duration-300 ${
                       isScrolled
                         ? 'bg-brand-primary hover:bg-brand-accent text-brand-secondary'
                         : 'bg-brand-secondary hover:bg-brand-secondary/90 text-brand-primary'
                     }`}
+                    onClick={() => {
+                      scrollToSection('#contact');
+                      setIsMobileMenuOpen(false);
+                    }}
                   >
                     Get Started
                   </Button>
