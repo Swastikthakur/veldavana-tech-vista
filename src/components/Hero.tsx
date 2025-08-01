@@ -72,14 +72,14 @@ const Hero = () => {
       ))}
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-full mx-auto px-8 md:px-16 lg:px-24 text-center">
+      <div className="relative z-10 w-full max-w-full mx-auto px-4 xs:px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 text-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
           <motion.h1 
-            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-brand-secondary mb-6 sm:mb-8 leading-tight px-4"
+            className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-brand-secondary mb-4 xs:mb-6 sm:mb-8 leading-tight px-2 xs:px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -93,7 +93,7 @@ const Hero = () => {
           </motion.h1>
           
           <motion.p 
-            className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-brand-secondary/90 mb-8 sm:mb-10 max-w-4xl mx-auto leading-relaxed px-4"
+            className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl text-brand-secondary/90 mb-6 xs:mb-8 sm:mb-10 max-w-4xl mx-auto leading-relaxed px-2 xs:px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -103,14 +103,14 @@ const Hero = () => {
           </motion.p>
           
           <motion.div 
-            className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
+            className="flex flex-col xs:flex-row gap-3 xs:gap-4 sm:gap-6 justify-center items-center px-2 xs:px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <Button 
               size="lg" 
-             className="w-full sm:w-auto bg-brand-secondary text-brand-primary hover:bg-brand-secondary/90 font-bold px-10 sm:px-12 py-5 sm:py-7 text-xl sm:text-2xl rounded-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 group"
+             className="w-full xs:w-auto bg-brand-secondary text-brand-primary hover:bg-brand-secondary/90 font-bold px-6 xs:px-8 sm:px-10 md:px-12 py-4 xs:py-5 sm:py-7 text-lg xs:text-xl sm:text-2xl rounded-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 group"
              onClick={() => {
                const servicesSection = document.getElementById('services');
                if (servicesSection) {
@@ -119,11 +119,11 @@ const Hero = () => {
              }}
             >
               Start Your Project
-              <ArrowRight className="ml-3 h-6 w-6 sm:h-7 sm:w-7 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="ml-2 xs:ml-3 h-5 w-5 xs:h-6 xs:w-6 sm:h-7 sm:w-7 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 
               size="lg" 
-              className="w-full sm:w-auto bg-brand-primary text-brand-secondary hover:bg-brand-accent font-bold px-10 sm:px-12 py-5 sm:py-7 text-xl sm:text-2xl rounded-xl transition-all duration-300 hover:shadow-2xl group overflow-hidden relative"
+              className="w-full xs:w-auto bg-brand-primary text-brand-secondary hover:bg-brand-accent font-bold px-6 xs:px-8 sm:px-10 md:px-12 py-4 xs:py-5 sm:py-7 text-lg xs:text-xl sm:text-2xl rounded-xl transition-all duration-300 hover:shadow-2xl group overflow-hidden relative"
               onClick={() => {
                 const projectsSection = document.getElementById('projects');
                 if (projectsSection) {
@@ -141,7 +141,7 @@ const Hero = () => {
         
         {/* Stats */}
         <motion.div 
-          className="mt-24 sm:mt-32 grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 md:gap-16 max-w-7xl mx-auto"
+          className="mt-16 xs:mt-20 sm:mt-24 md:mt-32 grid grid-cols-2 md:grid-cols-4 gap-6 xs:gap-8 sm:gap-10 md:gap-16 max-w-7xl mx-auto px-2 xs:px-4"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
@@ -159,10 +159,10 @@ const Hero = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
             >
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-secondary mb-2 sm:mb-3">
+              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-secondary mb-1 xs:mb-2 sm:mb-3">
                 {stat.number}
               </div>
-              <div className="text-brand-secondary/80 text-sm sm:text-base md:text-lg lg:text-xl leading-tight">
+              <div className="text-brand-secondary/80 text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl leading-tight">
                 {stat.label}
               </div>
             </motion.div>

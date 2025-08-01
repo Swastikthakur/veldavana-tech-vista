@@ -62,7 +62,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-brand-primary text-brand-secondary pt-24 lg:pt-32 pb-12">
-      <div className="w-full max-w-full mx-auto px-8 md:px-16 lg:px-24">
+      <div className="w-full max-w-full mx-auto px-4 xs:px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
         {/* Newsletter Section */}
         <motion.div
           className="py-8 sm:py-12 border-b border-brand-secondary/20"

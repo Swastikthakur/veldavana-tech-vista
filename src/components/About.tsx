@@ -48,7 +48,7 @@ const About = () => {
 
   return (
     <section id="about" className="py-24 lg:py-32 bg-muted/30">
-      <div className="w-full max-w-full mx-auto px-8 md:px-16 lg:px-24">
+      <div className="w-full max-w-full mx-auto px-4 xs:px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
         {/* Header */}
         <motion.div 
           className="text-center mb-16 sm:mb-20"
@@ -57,17 +57,17 @@ const About = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 sm:mb-8">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 xs:mb-6 sm:mb-8">
             About Veldavana Technologies
           </h2>
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-5xl mx-auto">
+          <p className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-5xl mx-auto">
             Founded with a vision to bridge the gap between innovative technology and business success, 
             we are a team of passionate professionals dedicated to delivering exceptional digital solutions.
           </p>
         </motion.div>
 
         {/* Mission, Vision, Values */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 mb-24 sm:mb-32">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 xs:gap-8 sm:gap-10 lg:gap-12 mb-16 xs:mb-20 sm:mb-24 lg:mb-32">
           {values.map((value, index) => (
             <motion.div
               key={index}
@@ -76,17 +76,17 @@ const About = () => {
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full border-0 bg-card shadow-sm hover:shadow-lg transition-all duration-300 p-2">
-                <CardHeader className="pb-6">
-                  <div className="w-20 h-20 bg-gradient-to-br from-brand-primary to-brand-accent rounded-lg flex items-center justify-center mb-6">
-                    <value.icon className="w-10 h-10 text-brand-secondary" />
+              <Card className="h-full border-0 bg-card shadow-sm hover:shadow-lg transition-all duration-300 p-1 xs:p-2">
+                <CardHeader className="pb-4 xs:pb-6">
+                  <div className="w-16 h-16 xs:w-18 xs:h-18 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-primary to-brand-accent rounded-lg flex items-center justify-center mb-4 xs:mb-6">
+                    <value.icon className="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 text-brand-secondary" />
                   </div>
-                  <CardTitle className="text-2xl lg:text-3xl font-bold text-foreground mb-2">
+                  <CardTitle className="text-lg xs:text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-2">
                     {value.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
+                  <p className="text-sm xs:text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed">
                     {value.description}
                   </p>
                 </CardContent>
@@ -103,16 +103,16 @@ const About = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 sm:mb-8">
+          <h3 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 xs:mb-6 sm:mb-8">
             Meet Our Team
           </h3>
-          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto">
+          <p className="text-base xs:text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto">
             Our diverse team of experts combines technical excellence with creative problem-solving 
             to deliver outstanding results for our clients.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 xs:gap-8 sm:gap-10 lg:gap-16 max-w-6xl mx-auto">
           {team.map((member, index) => (
             <motion.div
               key={index}
@@ -122,35 +122,35 @@ const About = () => {
               viewport={{ once: true }}
               whileHover={{ y: -10 }}
             >
-              <Card className="h-full border-0 bg-card shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden p-2">
+              <Card className="h-full border-0 bg-card shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden p-1 xs:p-2">
                 <div className="relative">
                   <img 
                     src={member.image} 
                     alt={member.name}
-                    className="w-full h-96 object-cover"
+                    className="w-full h-64 xs:h-80 sm:h-96 object-cover"
                     style={{ objectPosition: 'center 30%' }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-primary/80 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                <CardHeader className="pb-6">
-                  <CardTitle className="text-2xl lg:text-3xl font-bold text-foreground mb-2">
+                <CardHeader className="pb-4 xs:pb-6">
+                  <CardTitle className="text-lg xs:text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-2">
                     {member.name}
                   </CardTitle>
-                  <p className="text-brand-primary font-semibold text-lg lg:text-xl">
+                  <p className="text-brand-primary font-semibold text-base xs:text-lg lg:text-xl">
                     {member.role}
                   </p>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-lg lg:text-xl text-muted-foreground mb-6 leading-relaxed">
+                  <p className="text-sm xs:text-base sm:text-lg lg:text-xl text-muted-foreground mb-4 xs:mb-6 leading-relaxed">
                     {member.bio}
                   </p>
-                  <div className="space-y-3">
-                    <p className="text-base lg:text-lg font-semibold text-foreground">Key Skills:</p>
-                    <div className="flex flex-wrap gap-3">
+                  <div className="space-y-2 xs:space-y-3">
+                    <p className="text-sm xs:text-base lg:text-lg font-semibold text-foreground">Key Skills:</p>
+                    <div className="flex flex-wrap gap-2 xs:gap-3">
                       {member.skills.map((skill, skillIndex) => (
                         <span 
                           key={skillIndex}
-                          className="px-4 py-2 bg-brand-primary/10 text-brand-primary text-sm lg:text-base rounded-full"
+                          className="px-2 xs:px-3 sm:px-4 py-1 xs:py-2 bg-brand-primary/10 text-brand-primary text-xs xs:text-sm lg:text-base rounded-full"
                         >
                           {skill}
                         </span>
@@ -171,10 +171,10 @@ const About = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-10 sm:mb-16">
+          <h3 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 xs:mb-10 sm:mb-16">
             Our Achievements
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 lg:gap-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 xs:gap-8 sm:gap-10 lg:gap-16">
             {[
               { number: '10+', label: 'Prototypes Built', suffix: '' },
               { number: '5+', label: 'Pilot Clients & Collaborations', suffix: '' },
@@ -189,10 +189,10 @@ const About = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-brand-primary mb-3 sm:mb-4">
+                <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-brand-primary mb-2 xs:mb-3 sm:mb-4">
                   {stat.number}{stat.suffix}
                 </div>
-                <div className="text-muted-foreground text-sm sm:text-base md:text-lg lg:text-xl leading-tight">
+                <div className="text-muted-foreground text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl leading-tight">
                   {stat.label}
                 </div>
               </motion.div>

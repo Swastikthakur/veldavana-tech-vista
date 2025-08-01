@@ -51,7 +51,7 @@ const Services = () => {
 
   return (
     <section id="services" className="py-24 lg:py-32 bg-background">
-      <div className="w-full max-w-full mx-auto px-8 md:px-16 lg:px-24">
+      <div className="w-full max-w-full mx-auto px-4 xs:px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
         <motion.div 
           className="text-center mb-16 sm:mb-20"
           initial={{ opacity: 0, y: 50 }}
@@ -59,15 +59,15 @@ const Services = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 sm:mb-8">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 xs:mb-6 sm:mb-8">
             Our Services
           </h2>
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-5xl mx-auto">
+          <p className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-5xl mx-auto">
             We offer comprehensive technology solutions designed to accelerate your digital transformation journey.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xs:gap-8 sm:gap-10 lg:gap-12">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -78,23 +78,23 @@ const Services = () => {
               whileHover={{ y: -10 }}
             >
               <Link to={service.link}>
-                <Card className="h-full group hover:shadow-lg transition-all duration-300 border-0 bg-card shadow-sm hover:shadow-xl cursor-pointer p-2">
-                  <CardHeader className="pb-4">
-                    <div className="w-20 h-20 bg-gradient-to-br from-brand-primary to-brand-accent rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                      <service.icon className="w-10 h-10 text-brand-secondary" />
+                <Card className="h-full group hover:shadow-lg transition-all duration-300 border-0 bg-card shadow-sm hover:shadow-xl cursor-pointer p-1 xs:p-2">
+                  <CardHeader className="pb-3 xs:pb-4">
+                    <div className="w-16 h-16 xs:w-18 xs:h-18 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-primary to-brand-accent rounded-lg flex items-center justify-center mb-4 xs:mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <service.icon className="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 text-brand-secondary" />
                     </div>
-                    <CardTitle className="text-2xl lg:text-3xl font-bold text-foreground group-hover:text-brand-primary transition-colors duration-300 mb-2">
+                    <CardTitle className="text-lg xs:text-xl sm:text-2xl lg:text-3xl font-bold text-foreground group-hover:text-brand-primary transition-colors duration-300 mb-2">
                       {service.title}
                     </CardTitle>
-                    <CardDescription className="text-lg lg:text-xl text-muted-foreground">
+                    <CardDescription className="text-sm xs:text-base sm:text-lg lg:text-xl text-muted-foreground">
                       {service.description}
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <ul className="space-y-3">
+                    <ul className="space-y-2 xs:space-y-3">
                       {service.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center text-base lg:text-lg text-muted-foreground">
-                          <div className="w-3 h-3 bg-brand-primary rounded-full mr-4 flex-shrink-0"></div>
+                        <li key={featureIndex} className="flex items-center text-sm xs:text-base lg:text-lg text-muted-foreground">
+                          <div className="w-2 h-2 xs:w-3 xs:h-3 bg-brand-primary rounded-full mr-3 xs:mr-4 flex-shrink-0"></div>
                           {feature}
                         </li>
                       ))}
@@ -114,15 +114,15 @@ const Services = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-6">
+          <h3 className="text-xl xs:text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4 xs:mb-6">
             Ready to Transform Your Business?
           </h3>
-          <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground mb-8 sm:mb-10 max-w-4xl mx-auto">
+          <p className="text-base xs:text-lg sm:text-xl lg:text-2xl text-muted-foreground mb-6 xs:mb-8 sm:mb-10 max-w-4xl mx-auto">
             Let's discuss how our expertise can help you achieve your digital goals. 
             Contact us today for a free consultation.
           </p>
           <motion.button
-            className="bg-brand-primary text-brand-secondary px-8 sm:px-10 py-5 rounded-xl font-bold hover:bg-brand-accent transition-all duration-300 hover:shadow-xl text-lg sm:text-xl group overflow-hidden relative"
+            className="bg-brand-primary text-brand-secondary px-6 xs:px-8 sm:px-10 py-4 xs:py-5 rounded-xl font-bold hover:bg-brand-accent transition-all duration-300 hover:shadow-xl text-base xs:text-lg sm:text-xl group overflow-hidden relative"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => {

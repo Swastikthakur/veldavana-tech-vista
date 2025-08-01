@@ -116,7 +116,7 @@ const Contact = () => {
         <p className="font-semibold text-lg">Fill out the form 'send us a message'</p>
       </div>
       
-      <div className="w-full max-w-full mx-auto px-8 md:px-16 lg:px-24">
+      <div className="w-full max-w-full mx-auto px-4 xs:px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
         {/* Header */}
         <motion.div 
           className="text-center mb-16 sm:mb-20"
@@ -125,10 +125,10 @@ const Contact = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 sm:mb-8">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 xs:mb-6 sm:mb-8">
             Get In Touch
           </h2>
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-5xl mx-auto">
+          <p className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-5xl mx-auto">
             Ready to start your project? We'd love to hear from you. 
             Send us a message and we'll respond as soon as possible.
           </p>

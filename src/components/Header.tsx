@@ -49,8 +49,8 @@ const Header = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="w-full max-w-full mx-auto px-8 md:px-16 lg:px-24">
-        <div className="flex items-center justify-between h-20 md:h-24">
+      <div className="w-full max-w-full mx-auto px-4 xs:px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
+        <div className="flex items-center justify-between h-16 xs:h-18 sm:h-20 md:h-22 lg:h-24">
           {/* Logo */}
           <motion.div
             className="flex items-center space-x-3"
@@ -61,7 +61,7 @@ const Header = () => {
             <motion.img
               src={isScrolled ? logoBlue : logoWhite}
               alt="Veldavana Technologies"
-              className="h-24 md:h-28 w-auto transition-all duration-300"
+              className="h-16 xs:h-18 sm:h-20 md:h-22 lg:h-24 xl:h-28 w-auto transition-all duration-300"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
@@ -69,7 +69,7 @@ const Header = () => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-10">
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8 2xl:space-x-10">
             {navItems.map((item, index) => (
               <motion.a
                 key={item.name}
@@ -78,7 +78,7 @@ const Header = () => {
                   e.preventDefault();
                   scrollToSection(item.href, item.isPage);
                 }}
-                className={`transition-all duration-300 relative group font-medium text-lg lg:text-xl ${
+                className={`transition-all duration-300 relative group font-medium text-base lg:text-lg xl:text-xl ${
                   isScrolled 
                     ? 'text-brand-primary hover:text-brand-accent' 
                     : 'text-brand-secondary hover:text-brand-secondary/80'
@@ -97,14 +97,14 @@ const Header = () => {
 
           {/* CTA Button */}
           <motion.div
-            className="hidden md:block"
+            className="hidden lg:block"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
             <Button 
               variant="default" 
-              className={`font-bold px-8 py-4 text-lg rounded-xl transition-all duration-300 hover:shadow-xl ${
+              className={`font-bold px-4 lg:px-6 xl:px-8 py-3 lg:py-4 text-sm lg:text-base xl:text-lg rounded-xl transition-all duration-300 hover:shadow-xl ${
                 isScrolled
                   ? 'bg-brand-primary hover:bg-brand-accent text-brand-secondary'
                   : 'bg-brand-secondary hover:bg-brand-secondary/90 text-brand-primary'
@@ -117,14 +117,14 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className={`md:hidden transition-colors duration-300 ${
+            className={`lg:hidden transition-colors duration-300 ${
               isScrolled 
                 ? 'text-brand-primary hover:text-brand-accent' 
                 : 'text-brand-secondary hover:text-brand-secondary/80'
             }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
+            {isMobileMenuOpen ? <X size={24} className="xs:w-7 xs:h-7 sm:w-8 sm:h-8" /> : <Menu size={24} className="xs:w-7 xs:h-7 sm:w-8 sm:h-8" />}
           </button>
         </div>
 
@@ -132,7 +132,7 @@ const Header = () => {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              className={`md:hidden absolute top-full left-0 right-0 backdrop-blur-md shadow-lg border-t ${
+              className={`lg:hidden absolute top-full left-0 right-0 backdrop-blur-md shadow-lg border-t ${
                 isScrolled 
                   ? 'bg-background/95 border-border/20' 
                   : 'bg-brand-primary/95 border-brand-secondary/20'
@@ -142,12 +142,12 @@ const Header = () => {
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <nav className="flex flex-col space-y-6 p-6">
+              <nav className="flex flex-col space-y-4 xs:space-y-5 sm:space-y-6 p-4 xs:p-5 sm:p-6">
                 {navItems.map((item, index) => (
                   <motion.a
                     key={item.name}
                     href={item.href}
-                    className={`transition-colors duration-300 py-4 block font-medium text-xl ${
+                    className={`transition-colors duration-300 py-3 xs:py-4 block font-medium text-lg xs:text-xl sm:text-2xl ${
                       isScrolled 
                         ? 'text-brand-primary hover:text-brand-accent' 
                         : 'text-brand-secondary hover:text-brand-secondary/80'
@@ -171,7 +171,7 @@ const Header = () => {
                 >
                   <Button 
                     variant="default" 
-                    className={`w-full font-bold py-5 text-xl rounded-xl transition-all duration-300 ${
+                    className={`w-full font-bold py-4 xs:py-5 text-lg xs:text-xl sm:text-2xl rounded-xl transition-all duration-300 ${
                       isScrolled
                         ? 'bg-brand-primary hover:bg-brand-accent text-brand-secondary'
                         : 'bg-brand-secondary hover:bg-brand-secondary/90 text-brand-primary'

@@ -46,7 +46,7 @@ const Projects = () => {
 
   return (
     <section id="projects" className="py-24 lg:py-32 bg-background">
-      <div className="w-full max-w-full mx-auto px-8 md:px-16 lg:px-24">
+      <div className="w-full max-w-full mx-auto px-4 xs:px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
         {/* Header */}
         <motion.div 
           className="text-center mb-16 sm:mb-20"
@@ -55,10 +55,10 @@ const Projects = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 sm:mb-8">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 xs:mb-6 sm:mb-8">
             Featured Projects
           </h2>
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-5xl mx-auto">
+          <p className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-5xl mx-auto">
             Explore our portfolio of successful projects that showcase our expertise in delivering 
             innovative solutions across various industries.
           </p>
@@ -72,12 +72,12 @@ const Projects = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
             transition={{ duration: 0.5 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-6 xs:gap-8 sm:gap-12 lg:gap-20 items-center"
           >
             {/* Project Image */}
             <div className="relative group flex justify-center">
-              <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-muted/30 to-muted/10 p-10 shadow-2xl">
-                <div className="w-96 h-[650px] flex items-center justify-center">
+              <div className="relative overflow-hidden rounded-2xl xs:rounded-3xl bg-gradient-to-br from-muted/30 to-muted/10 p-4 xs:p-6 sm:p-8 lg:p-10 shadow-2xl">
+                <div className="w-64 h-[400px] xs:w-80 xs:h-[500px] sm:w-96 sm:h-[650px] flex items-center justify-center">
                   <img 
                     src={project.images[0]} 
                     alt={project.title}
@@ -89,25 +89,25 @@ const Projects = () => {
             </div>
 
             {/* Project Details */}
-            <div className="space-y-6">
+            <div className="space-y-4 xs:space-y-6">
               <div>
-                <span className="inline-block px-4 py-2 bg-brand-primary/10 text-brand-primary text-base rounded-full mb-6">
+                <span className="inline-block px-3 xs:px-4 py-1 xs:py-2 bg-brand-primary/10 text-brand-primary text-sm xs:text-base rounded-full mb-4 xs:mb-6">
                   {project.category}
                 </span>
-                <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+                <h3 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 xs:mb-6">
                   {project.title}
                 </h3>
-                <p className="text-muted-foreground text-xl lg:text-2xl leading-relaxed">
+                <p className="text-muted-foreground text-base xs:text-lg sm:text-xl lg:text-2xl leading-relaxed">
                   {project.description}
                 </p>
               </div>
 
               <div>
-                <h4 className="text-xl lg:text-2xl font-semibold text-foreground mb-4">Key Features:</h4>
-                <ul className="space-y-3">
+                <h4 className="text-lg xs:text-xl lg:text-2xl font-semibold text-foreground mb-3 xs:mb-4">Key Features:</h4>
+                <ul className="space-y-2 xs:space-y-3">
                   {project.features.map((feature, index) => (
-                    <li key={index} className="flex items-center text-muted-foreground text-lg lg:text-xl">
-                      <div className="w-3 h-3 bg-brand-primary rounded-full mr-4 flex-shrink-0"></div>
+                    <li key={index} className="flex items-center text-muted-foreground text-sm xs:text-base sm:text-lg lg:text-xl">
+                      <div className="w-2 h-2 xs:w-3 xs:h-3 bg-brand-primary rounded-full mr-3 xs:mr-4 flex-shrink-0"></div>
                       {feature}
                     </li>
                   ))}
@@ -115,12 +115,12 @@ const Projects = () => {
               </div>
 
               <div>
-                <h4 className="text-xl lg:text-2xl font-semibold text-foreground mb-4">Technologies Used:</h4>
-                <div className="flex flex-wrap gap-2">
+                <h4 className="text-lg xs:text-xl lg:text-2xl font-semibold text-foreground mb-3 xs:mb-4">Technologies Used:</h4>
+                <div className="flex flex-wrap gap-1 xs:gap-2">
                   {project.technologies.map((tech, index) => (
                     <span 
                       key={index}
-                      className="px-4 py-2 bg-brand-primary/10 text-brand-primary text-base lg:text-lg rounded-full"
+                      className="px-2 xs:px-3 sm:px-4 py-1 xs:py-2 bg-brand-primary/10 text-brand-primary text-xs xs:text-sm sm:text-base lg:text-lg rounded-full"
                     >
                       {tech}
                     </span>
@@ -128,27 +128,27 @@ const Projects = () => {
                 </div>
               </div>
 
-              <div className="bg-muted/50 rounded-xl p-8">
-                <h4 className="text-xl lg:text-2xl font-semibold text-foreground mb-4">Results Achieved:</h4>
-                <div className="space-y-2">
+              <div className="bg-muted/50 rounded-xl p-4 xs:p-6 sm:p-8">
+                <h4 className="text-lg xs:text-xl lg:text-2xl font-semibold text-foreground mb-3 xs:mb-4">Results Achieved:</h4>
+                <div className="space-y-1 xs:space-y-2">
                   {project.results.map((result, index) => (
-                    <div key={index} className="flex items-center text-muted-foreground text-lg lg:text-xl">
-                      <div className="w-3 h-3 bg-brand-success rounded-full mr-4 flex-shrink-0"></div>
+                    <div key={index} className="flex items-center text-muted-foreground text-sm xs:text-base sm:text-lg lg:text-xl">
+                      <div className="w-2 h-2 xs:w-3 xs:h-3 bg-brand-success rounded-full mr-3 xs:mr-4 flex-shrink-0"></div>
                       {result}
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="flex gap-4">
+              <div className="flex flex-col xs:flex-row gap-3 xs:gap-4">
                 <Link to={project.route || '#'}>
-                  <Button className="bg-brand-primary hover:bg-brand-accent text-brand-secondary text-lg py-6 px-8 rounded-xl font-bold">
-                    <ExternalLink className="w-5 h-5 mr-3" />
+                  <Button className="w-full xs:w-auto bg-brand-primary hover:bg-brand-accent text-brand-secondary text-sm xs:text-base sm:text-lg py-4 xs:py-5 sm:py-6 px-4 xs:px-6 sm:px-8 rounded-xl font-bold">
+                    <ExternalLink className="w-4 h-4 xs:w-5 xs:h-5 mr-2 xs:mr-3" />
                     View Project Details
                   </Button>
                 </Link>
-                <Button variant="outline" className="border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-brand-secondary text-lg py-6 px-8 rounded-xl font-bold">
-                  <Github className="w-5 h-5 mr-3" />
+                <Button variant="outline" className="w-full xs:w-auto border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-brand-secondary text-sm xs:text-base sm:text-lg py-4 xs:py-5 sm:py-6 px-4 xs:px-6 sm:px-8 rounded-xl font-bold">
+                  <Github className="w-4 h-4 xs:w-5 xs:h-5 mr-2 xs:mr-3" />
                   Case Study
                 </Button>
               </div>
