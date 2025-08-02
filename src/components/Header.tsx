@@ -34,7 +34,12 @@ const Header = () => {
     
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const headerHeight = 100; // Account for fixed header
+      const elementPosition = (element as HTMLElement).offsetTop - headerHeight;
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      });
     }
   };
 

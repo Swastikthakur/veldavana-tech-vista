@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Github, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Twitter, Linkedin, Github, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useState } from 'react';
@@ -53,50 +53,15 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
     { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Instagram, href: '#', label: 'Instagram' }
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/veldavana-technologies/', label: 'LinkedIn' },
+    { icon: Github, href: 'https://github.com/VeldavanaTechnologies', label: 'GitHub' },
+    { icon: Instagram, href: 'https://www.instagram.com/veldavana.technologies', label: 'Instagram' }
   ];
 
   return (
     <footer className="bg-brand-primary text-brand-secondary pt-24 lg:pt-32 pb-12">
       <div className="w-full max-w-full mx-auto px-4 xs:px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
-        {/* Newsletter Section */}
-        <motion.div
-          className="py-8 sm:py-12 border-b border-brand-secondary/20"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <div className="max-w-5xl mx-auto text-center">
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4">
-              Stay Updated with Our Latest Insights
-            </h3>
-            <p className="text-brand-secondary/80 mb-6 sm:mb-8 text-sm sm:text-base md:text-lg">
-              Subscribe to our newsletter for the latest tech trends, project updates, and industry insights.
-            </p>
-            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-md mx-auto">
-              <Input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                required
-                className="flex-1 bg-brand-secondary/10 border-brand-secondary/30 text-brand-secondary placeholder-brand-secondary/60 text-sm sm:text-base"
-              />
-              <Button
-                type="submit"
-                disabled={isSubscribing}
-                className="bg-brand-secondary text-brand-primary hover:bg-brand-secondary/90 font-semibold text-sm sm:text-base px-4 sm:px-6"
-              >
-                {isSubscribing ? 'Subscribing...' : 'Subscribe'}
-              </Button>
-            </form>
-          </div>
-        </motion.div>
 
         {/* Main Footer Content */}
         <div className="py-8 sm:py-12">

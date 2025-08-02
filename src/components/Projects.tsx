@@ -97,8 +97,8 @@ const Projects = () => {
           >
             {/* Project Image */}
             <div className="relative group flex justify-center">
-              <div className="relative overflow-hidden rounded-2xl xs:rounded-3xl bg-gradient-to-br from-muted/30 to-muted/10 p-4 xs:p-6 sm:p-8 lg:p-10 shadow-2xl">
-                <div className="w-64 h-[400px] xs:w-80 xs:h-[500px] sm:w-96 sm:h-[650px] flex items-center justify-center">
+              <div className="relative overflow-hidden rounded-2xl xs:rounded-3xl bg-gradient-to-br from-muted/30 to-muted/10 p-3 xs:p-4 sm:p-6 lg:p-8 shadow-2xl">
+                <div className="w-48 h-[300px] xs:w-60 xs:h-[380px] sm:w-72 sm:h-[450px] flex items-center justify-center">
                   <img 
                     src={project.images[0]} 
                     alt={project.title}
@@ -168,10 +168,6 @@ const Projects = () => {
                     View Project Details
                   </Button>
                 </Link>
-                <Button variant="outline" className="w-full xs:w-auto border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-brand-secondary text-sm xs:text-base sm:text-lg py-4 xs:py-5 sm:py-6 px-4 xs:px-6 sm:px-8 rounded-xl font-bold">
-                  <Github className="w-4 h-4 xs:w-5 xs:h-5 mr-2 xs:mr-3" />
-                  Case Study
-                </Button>
               </div>
             </div>
           </motion.div>

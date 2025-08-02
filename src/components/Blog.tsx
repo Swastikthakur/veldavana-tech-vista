@@ -309,22 +309,6 @@ const Blog = () => {
           </div>
         </div>
 
-        {/* Load More Button */}
-        <motion.div
-          className="text-center mt-20 max-w-7xl mx-auto"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <Button 
-            variant="outline" 
-            className="border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-brand-secondary px-10 py-4 text-lg group relative overflow-hidden"
-          >
-            <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">Load More Articles</span>
-            <div className="absolute inset-0 bg-brand-accent transform translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
-          </Button>
-        </motion.div>
 
       </div>
     </section>

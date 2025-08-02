@@ -15,16 +15,6 @@ const ObjectDetection = () => {
               <ArrowLeft className="h-5 w-5" />
               <span className="text-sm font-medium">Back to Projects</span>
             </Link>
-            <div className="flex items-center space-x-4">
-              <Button variant="outline" size="sm">
-                <Github className="h-4 w-4 mr-2" />
-                View Code
-              </Button>
-              <Button size="sm">
-                <ExternalLink className="h-4 w-4 mr-2" />
-                Live Demo
-              </Button>
-            </div>
           </div>
         </div>
       </header>
@@ -58,11 +48,11 @@ const ObjectDetection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative mb-16"
           >
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-muted/30 to-muted/10 p-8 lg:p-12 shadow-2xl">
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-muted/30 to-muted/10 p-8 lg:p-12 shadow-2xl max-w-3xl mx-auto">
               <img 
                 src="/lovable-uploads/1b0ef320-8d97-4c2d-8945-cf1a1e7540ac.png" 
                 alt="Object Detection AI Interface"
-                className="w-full h-auto object-contain drop-shadow-2xl"
+                className="w-full h-auto object-contain drop-shadow-2xl max-h-96"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-primary/10 via-transparent to-brand-accent/5 rounded-3xl" />
             </div>
