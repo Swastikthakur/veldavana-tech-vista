@@ -13,6 +13,7 @@ import MobileApps from "./pages/services/MobileApps";
 import UIUXDesign from "./pages/services/UIUXDesign";
 import CloudDevOps from "./pages/services/CloudDevOps";
 import SakhiRescue from "./pages/projects/SakhiRescue";
+import ObjectDetection from "./pages/projects/ObjectDetection";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/services/ui-ux-design" element={<UIUXDesign />} />
           <Route path="/services/cloud-devops" element={<CloudDevOps />} />
           <Route path="/projects/sakhi-rescue" element={<SakhiRescue />} />
+          <Route path="/projects/object-detection" element={<ObjectDetection />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

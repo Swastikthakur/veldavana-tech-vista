@@ -31,6 +31,27 @@ const Projects = () => {
         'Emergency contact management'
       ],
       route: '/projects/sakhi-rescue'
+    },
+    {
+      id: 2,
+      title: 'Object Detection Program',
+      description: 'A real-time object detection system built using deep learning. Detects and labels multiple objects from live or static feeds with high accuracy. Designed to be fast, scalable, and easily integrable into real-world applications.',
+      images: [
+        '/lovable-uploads/1b0ef320-8d97-4c2d-8945-cf1a1e7540ac.png',
+        '/lovable-uploads/fe6b67a8-671d-49e3-9054-d21574b63ddd.png',
+        '/lovable-uploads/0dbcb343-f35b-4154-acc5-be64fafaea7d.png'
+      ],
+      technologies: ['Python', 'OpenCV', 'TensorFlow', 'YOLOv5', 'NumPy'],
+      category: 'AI & Machine Learning',
+      client: 'AI Research Project',
+      results: ['Real-time object detection with 95% accuracy', 'Edge device optimization achieved', 'Multi-object tracking capability implemented'],
+      features: [
+        'Real-time detection with bounding boxes',
+        'Multi-object tracking',
+        'High accuracy even in low-light conditions',
+        'Optimized for edge devices'
+      ],
+      route: '/projects/object-detection'
     }
   ];
 
