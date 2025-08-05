@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, MessageCircle, Code, Database, Cog, Shield, Zap, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -5,6 +6,11 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 const CustomSoftware = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.title = 'Custom Software Development | Veldavana Technologies';
+  }, []);
+
   const offerings = [
     {
       icon: Code,

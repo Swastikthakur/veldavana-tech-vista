@@ -98,8 +98,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            We are Veldavana Technologies, your trusted partner in digital transformation. 
-            Specializing in cutting-edge software solutions, AI integration, and innovative web development.
+            Veldavana Technologies is your trusted partner for digital transformation in 2025. We specialize in AI-powered software solutions, next-gen web development, and custom technology integration that drives business growth and operational excellence.
           </motion.p>
           
           <motion.div 

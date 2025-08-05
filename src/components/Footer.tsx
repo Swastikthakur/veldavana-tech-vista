@@ -46,14 +46,14 @@ const Footer = () => {
       { name: 'Documentation', href: '#' },
       { name: 'API Reference', href: '#' },
       { name: 'Help Center', href: '#' },
-      { name: 'Privacy Policy', href: '#' },
+      { name: 'Privacy Policy', href: '/privacy-policy' },
       { name: 'Terms of Service', href: '#' },
       { name: 'Cookie Policy', href: '#' }
     ]
   };
 
   const socialLinks = [
-    { icon: Twitter, href: '#', label: 'Twitter' },
+    { icon: Twitter, href: 'https://x.com/VeldavanaL91535', label: 'Twitter' },
     { icon: Linkedin, href: 'https://www.linkedin.com/company/veldavana-technologies/', label: 'LinkedIn' },
     { icon: Github, href: 'https://github.com/VeldavanaTechnologies', label: 'GitHub' },
     { icon: Instagram, href: 'https://www.instagram.com/veldavana.technologies', label: 'Instagram' }
@@ -65,7 +65,7 @@ const Footer = () => {
 
         {/* Main Footer Content */}
         <div className="py-8 sm:py-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16 mb-24">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16 mb-24">
             {/* Company Info */}
             <motion.div
               className="lg:col-span-2"
@@ -92,7 +92,7 @@ const Footer = () => {
                 </div>
                 <div className="flex items-center">
                   <Mail className="w-5 h-5 mr-5 text-brand-secondary/60" />
-                  <span className="text-base lg:text-lg">info@veldavnatechnologies.com</span>
+                  <span className="text-base lg:text-lg">veldavanatechnologies@gmail.com</span>
                 </div>
               </div>
             </motion.div>
@@ -119,6 +119,27 @@ const Footer = () => {
               </ul>
             </motion.div>
 
+            {/* Resources */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <h4 className="font-bold text-xl lg:text-2xl mb-6">Resources</h4>
+              <ul className="space-y-4">
+                {footerLinks.resources.map((link, index) => (
+                  <li key={index}>
+                    <a
+                      href={link.href}
+                      className="text-brand-secondary/80 hover:text-brand-secondary transition-colors duration-200 text-base lg:text-lg"
+                    >
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
 
           </div>
         </div>

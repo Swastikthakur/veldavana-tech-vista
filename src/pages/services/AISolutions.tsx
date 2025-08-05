@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, MessageCircle, Brain, Bot, Eye, MessageSquare, BarChart, Cpu } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -5,6 +6,11 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 const AISolutions = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.title = 'AI Solutions | Veldavana Technologies';
+  }, []);
+
   const offerings = [
     {
       icon: Brain,
@@ -64,6 +70,13 @@ const AISolutions = () => {
 
       {/* Hero Section */}
       <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
+        {/* AI Background Pattern */}
+        <div 
+          className="absolute inset-0 opacity-10 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='3'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3Ccircle cx='50' cy='10' r='2'/%3E%3Ccircle cx='10' cy='50' r='2'/%3E%3Ccircle cx='50' cy='50' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+          }}
+        />
         <motion.div 
           className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-brand-accent/5"
           initial={{ opacity: 0 }}

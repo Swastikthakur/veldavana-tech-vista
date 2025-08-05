@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, MessageCircle, Palette, Users, Figma, Smartphone, Monitor, Lightbulb } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -5,6 +6,11 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 const UIUXDesign = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.title = 'UI/UX Design | Veldavana Technologies';
+  }, []);
+
   const offerings = [
     {
       icon: Users,

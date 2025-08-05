@@ -128,7 +128,10 @@ const About = () => {
                     src={member.image} 
                     alt={member.name}
                     className="w-full h-64 xs:h-80 sm:h-96 object-cover"
-                    style={{ objectPosition: member.name === 'Aastha Bhattacharjee' ? 'center 40%' : 'center 30%' }}
+                    style={{ 
+                      objectPosition: member.name === 'Aastha Bhattacharjee' ? 'center 60%' : 'center 30%',
+                      transform: member.name === 'Aastha Bhattacharjee' ? 'scale(0.85)' : 'scale(1)'
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-primary/80 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
                 </div>

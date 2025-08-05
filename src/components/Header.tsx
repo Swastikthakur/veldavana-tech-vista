@@ -28,13 +28,18 @@ const Header = () => {
   
   const scrollToSection = (href: string, isPage: boolean = false) => {
     if (isPage) {
+      // For page navigation, navigate first then scroll to top
       window.location.href = href;
+      // Add a small delay to ensure navigation completes before scrolling
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
       return;
     }
     
     const element = document.querySelector(href);
     if (element) {
-      const headerHeight = 100; // Account for fixed header
+      const headerHeight = 80; // Reduced for new header height
       const elementPosition = (element as HTMLElement).offsetTop - headerHeight;
       window.scrollTo({
         top: elementPosition,
@@ -55,7 +60,7 @@ const Header = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="w-full max-w-full mx-auto px-4 xs:px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
-        <div className="flex items-center justify-between h-16 xs:h-18 sm:h-20 md:h-22 lg:h-24">
+        <div className="flex items-center justify-between h-14 xs:h-16 sm:h-18 md:h-20 lg:h-22">
           {/* Logo */}
           <motion.div
             className="flex items-center space-x-3"
@@ -66,7 +71,7 @@ const Header = () => {
             <motion.img
               src={isScrolled ? logoBlue : logoWhite}
               alt="Veldavana Technologies"
-              className="h-16 xs:h-18 sm:h-20 md:h-22 lg:h-24 xl:h-28 w-auto transition-all duration-300"
+              className="h-14 xs:h-16 sm:h-18 md:h-20 lg:h-22 xl:h-24 w-auto transition-all duration-300"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}

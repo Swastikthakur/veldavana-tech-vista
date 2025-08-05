@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, MessageCircle, Globe, Smartphone, ShoppingCart, Palette, Zap, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -5,6 +6,11 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 const WebDevelopment = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.title = 'Web Development | Veldavana Technologies';
+  }, []);
+
   const offerings = [
     {
       icon: Globe,
@@ -64,6 +70,13 @@ const WebDevelopment = () => {
 
       {/* Hero Section */}
       <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
+        {/* Web Development Background Pattern */}
+        <div 
+          className="absolute inset-0 opacity-10 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Cpath d='M20 20h40v40H20z'/%3E%3Cpath d='M30 30h20v20H30z'/%3E%3Ccircle cx='40' cy='40' r='8'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+          }}
+        />
         <motion.div 
           className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-brand-accent/5"
           initial={{ opacity: 0 }}
