@@ -39,7 +39,7 @@ const Header = () => {
     
     const element = document.querySelector(href);
     if (element) {
-      const headerHeight = 80; // Reduced for new header height
+      const headerHeight = 60; // Further reduced header height
       const elementPosition = (element as HTMLElement).offsetTop - headerHeight;
       window.scrollTo({
         top: elementPosition,
@@ -60,7 +60,7 @@ const Header = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="w-full max-w-full mx-auto px-4 xs:px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
-        <div className="flex items-center justify-between h-14 xs:h-16 sm:h-18 md:h-20 lg:h-22">
+        <div className="flex items-center justify-between h-12 xs:h-14 sm:h-16 md:h-18 lg:h-20">
           {/* Logo */}
           <motion.div
             className="flex items-center space-x-3"
@@ -71,7 +71,7 @@ const Header = () => {
             <motion.img
               src={isScrolled ? logoBlue : logoWhite}
               alt="Veldavana Technologies"
-              className="h-14 xs:h-16 sm:h-18 md:h-20 lg:h-22 xl:h-24 w-auto transition-all duration-300"
+              className="h-10 xs:h-12 sm:h-14 md:h-16 lg:h-18 xl:h-20 w-auto transition-all duration-300"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}

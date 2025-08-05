@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Target, Eye, Users, Award } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 // Using uploaded images directly
-const ceoPic = '/lovable-uploads/243154ff-c932-4df9-a1b9-bf0e09b4c690.png'; // Girl - CEO & Founder
+const ceoPic = '/lovable-uploads/42b89ec0-cbec-4169-998a-376dadf597ff.png'; // Girl - CEO & Founder
 const ctoPic = '/lovable-uploads/1421a9c0-c454-4f57-99f4-ee5cfa21bbb4.png'; // Boy - CTO & Founder
 
 const About = () => {
