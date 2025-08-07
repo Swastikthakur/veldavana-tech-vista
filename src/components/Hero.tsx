@@ -140,7 +140,7 @@ const Hero = () => {
         
         {/* Stats */}
         <motion.div 
-          className="mt-16 xs:mt-20 sm:mt-24 md:mt-32 grid grid-cols-2 md:grid-cols-4 gap-6 xs:gap-8 sm:gap-10 md:gap-16 max-w-7xl mx-auto px-2 xs:px-4"
+          className="mt-12 xs:mt-16 sm:mt-20 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-6 xs:gap-8 sm:gap-10 md:gap-16 max-w-7xl mx-auto px-2 xs:px-4"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
