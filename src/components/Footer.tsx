@@ -43,12 +43,8 @@ const Footer = () => {
       { name: 'Contact', href: '#contact' }
     ],
     resources: [
-      { name: 'Documentation', href: '#' },
-      { name: 'API Reference', href: '#' },
-      { name: 'Help Center', href: '#' },
       { name: 'Privacy Policy', href: '/privacy-policy' },
-      { name: 'Terms of Service', href: '#' },
-      { name: 'Cookie Policy', href: '#' }
+      { name: 'Terms of Service', href: '#' }
     ]
   };
 

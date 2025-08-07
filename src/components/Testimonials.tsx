@@ -3,6 +3,7 @@ import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { useGSAPScrollAnimation, useGSAPHover } from '@/hooks/useGSAP';
 
 const Testimonials = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -52,6 +53,12 @@ const Testimonials = () => {
     testimonials[(currentTestimonial + 2) % testimonials.length]
   ];
 
+  const gridRef = useGSAPScrollAnimation({ 
+    animation: 'fadeInScale', 
+    duration: 0.6, 
+    stagger: 0.2 
+  });
+
   return (
     <section className="py-24 lg:py-32 bg-muted/30">
       <div className="w-full max-w-full mx-auto px-4 xs:px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
@@ -73,84 +80,93 @@ const Testimonials = () => {
         </motion.div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xs:gap-8 sm:gap-10 lg:gap-16 mb-12 xs:mb-16">
-          {currentTestimonials.map((testimonial, index) => (
-            <motion.div
-              key={testimonial.id}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="relative"
-            >
-              {testimonial.isCTA ? (
-                <a href="#contact" className="block h-full">
-                  <Card 
-                    className="h-full border-0 bg-blue-900 shadow-lg hover:shadow-xl transition-all duration-300 p-4 xs:p-6 sm:p-8 lg:p-10 relative overflow-hidden rounded-xl hover:scale-105 hover:brightness-110 cursor-pointer"
-                  >
-                    <CardContent className="p-0 flex flex-col items-center justify-center h-full">
-                      {/* Plus Icon */}
-                      <div className="text-white mb-4 xs:mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 xs:h-14 xs:w-14 sm:h-16 sm:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                        </svg>
+        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xs:gap-8 sm:gap-10 lg:gap-16 mb-12 xs:mb-16">
+          {currentTestimonials.map((testimonial, index) => {
+            const TestimonialCard = () => {
+              const hoverRef = useGSAPHover();
+              
+              return (
+                <div
+                  key={testimonial.id}
+                  className="relative"
+                >
+                  {testimonial.isCTA ? (
+                    <a href="#contact" className="block h-full">
+                      <div ref={hoverRef}>
+                        <Card 
+                          className="h-full border-0 bg-blue-900 shadow-lg hover:shadow-xl transition-all duration-300 p-4 xs:p-6 sm:p-8 lg:p-10 relative overflow-hidden rounded-xl hover:brightness-110 cursor-pointer"
+                        >
+                          <CardContent className="p-0 flex flex-col items-center justify-center h-full">
+                            {/* Plus Icon */}
+                            <div className="text-white mb-4 xs:mb-6">
+                              <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 xs:h-14 xs:w-14 sm:h-16 sm:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                              </svg>
+                            </div>
+                            
+                            {/* CTA Text */}
+                            <h3 className="text-white text-lg xs:text-xl sm:text-2xl lg:text-3xl font-bold mb-2 xs:mb-3 text-center">
+                              Be the Next Happy Client
+                            </h3>
+                            <p className="text-white/70 text-sm xs:text-base sm:text-lg text-center">
+                              Share your journey with us
+                            </p>
+                          </CardContent>
+                        </Card>
                       </div>
-                      
-                      {/* CTA Text */}
-                      <h3 className="text-white text-lg xs:text-xl sm:text-2xl lg:text-3xl font-bold mb-2 xs:mb-3 text-center">
-                        Be the Next Happy Client
-                      </h3>
-                      <p className="text-white/70 text-sm xs:text-base sm:text-lg text-center">
-                        Share your journey with us
-                      </p>
-                    </CardContent>
-                  </Card>
-                </a>
-              ) : (
-                <Card className="h-full border-0 bg-card shadow-sm hover:shadow-lg transition-all duration-300 p-4 xs:p-6 sm:p-8 lg:p-10 relative overflow-hidden">
-                  {/* Quote Icon */}
-                  <div className="absolute top-4 right-4 xs:top-6 xs:right-6 text-brand-primary/20">
-                    <Quote size={32} className="xs:w-10 xs:h-10 sm:w-12 sm:h-12" />
-                  </div>
-                  
-                  {/* Rating */}
-                  <div className="flex items-center mb-3 xs:mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star 
-                        key={i} 
-                        className="w-4 h-4 xs:w-5 xs:h-5 lg:w-6 lg:h-6 fill-yellow-400 text-yellow-400" 
-                      />
-                    ))}
-                  </div>
+                    </a>
+                  ) : (
+                    <div ref={hoverRef}>
+                      <Card className="h-full border-0 bg-card shadow-sm hover:shadow-lg transition-all duration-300 p-4 xs:p-6 sm:p-8 lg:p-10 relative overflow-hidden">
+                        {/* Quote Icon */}
+                        <div className="absolute top-4 right-4 xs:top-6 xs:right-6 text-brand-primary/20">
+                          <Quote size={32} className="xs:w-10 xs:h-10 sm:w-12 sm:h-12" />
+                        </div>
+                        
+                        {/* Rating */}
+                        <div className="flex items-center mb-3 xs:mb-4">
+                          {[...Array(testimonial.rating)].map((_, i) => (
+                            <Star 
+                              key={i} 
+                              className="w-4 h-4 xs:w-5 xs:h-5 lg:w-6 lg:h-6 fill-yellow-400 text-yellow-400" 
+                            />
+                          ))}
+                        </div>
 
-                  {/* Content */}
-                  <CardContent className="p-0">
-                    <p className="text-muted-foreground text-sm xs:text-base sm:text-lg lg:text-xl mb-6 xs:mb-8 leading-relaxed italic">
-                      "{testimonial.content}"
-                    </p>
-                    
-                    <div className="flex items-center">
-                      <div className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-brand-primary to-brand-accent rounded-full flex items-center justify-center mr-4 xs:mr-6 flex-shrink-0">
-                        <span className="text-brand-secondary font-semibold text-sm xs:text-base sm:text-lg">
-                          {testimonial.name.split(' ').map(n => n[0]).join('')}
-                        </span>
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-foreground text-base xs:text-lg lg:text-xl">
-                          {testimonial.name}
-                        </h4>
-                        <p className="text-sm xs:text-base lg:text-lg text-muted-foreground">
-                          {testimonial.role}
-                        </p>
-                        <p className="text-sm xs:text-base lg:text-lg text-brand-primary font-medium">
-                          {testimonial.company}
-                        </p>
-                      </div>
+                        {/* Content */}
+                        <CardContent className="p-0">
+                          <p className="text-muted-foreground text-sm xs:text-base sm:text-lg lg:text-xl mb-6 xs:mb-8 leading-relaxed italic">
+                            "{testimonial.content}"
+                          </p>
+                          
+                          <div className="flex items-center">
+                            <div className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-brand-primary to-brand-accent rounded-full flex items-center justify-center mr-4 xs:mr-6 flex-shrink-0">
+                              <span className="text-brand-secondary font-semibold text-sm xs:text-base sm:text-lg">
+                                {testimonial.name.split(' ').map(n => n[0]).join('')}
+                              </span>
+                            </div>
+                            <div>
+                              <h4 className="font-semibold text-foreground text-base xs:text-lg lg:text-xl">
+                                {testimonial.name}
+                              </h4>
+                              <p className="text-sm xs:text-base lg:text-lg text-muted-foreground">
+                                {testimonial.role}
+                              </p>
+                              <p className="text-sm xs:text-base lg:text-lg text-brand-primary font-medium">
+                                {testimonial.company}
+                              </p>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
                     </div>
-                  </CardContent>
-                </Card>
-              )}
-            </motion.div>
-          ))}
+                  )}
+                </div>
+              );
+            };
+
+            return <TestimonialCard key={index} />;
+          })}
         </div>
 
         {/* Navigation */}

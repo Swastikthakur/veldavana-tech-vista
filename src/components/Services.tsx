@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Code, Globe, Brain, Smartphone, Palette, Cloud } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
+import { useGSAPScrollAnimation, useGSAPHover } from '@/hooks/useGSAP';
 
 const Services = () => {
   const services = [
@@ -49,6 +50,12 @@ const Services = () => {
     }
   ];
 
+  const gridRef = useGSAPScrollAnimation({ 
+    animation: 'fadeInUp', 
+    duration: 0.6, 
+    stagger: 0.15 
+  });
+
   return (
     <section id="services" className="py-24 lg:py-32 bg-background">
       <div className="w-full max-w-full mx-auto px-4 xs:px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
@@ -67,43 +74,44 @@ const Services = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xs:gap-8 sm:gap-10 lg:gap-12">
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -10 }}
-            >
-              <Link to={service.link}>
-                <Card className="h-full group hover:shadow-lg transition-all duration-300 border-0 bg-card shadow-sm hover:shadow-xl cursor-pointer p-1 xs:p-2">
-                  <CardHeader className="pb-3 xs:pb-4">
-                    <div className="w-16 h-16 xs:w-18 xs:h-18 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-primary to-brand-accent rounded-lg flex items-center justify-center mb-4 xs:mb-6 group-hover:scale-110 transition-transform duration-300">
-                      <service.icon className="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 text-brand-secondary" />
-                    </div>
-                    <CardTitle className="text-lg xs:text-xl sm:text-2xl lg:text-3xl font-bold text-foreground group-hover:text-brand-primary transition-colors duration-300 mb-2">
-                      {service.title}
-                    </CardTitle>
-                    <CardDescription className="text-sm xs:text-base sm:text-lg lg:text-xl text-muted-foreground">
-                      {service.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2 xs:space-y-3">
-                      {service.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center text-sm xs:text-base lg:text-lg text-muted-foreground">
-                          <div className="w-2 h-2 xs:w-3 xs:h-3 bg-brand-primary rounded-full mr-3 xs:mr-4 flex-shrink-0"></div>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </Link>
-            </motion.div>
-          ))}
+        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xs:gap-8 sm:gap-10 lg:gap-12">
+          {services.map((service, index) => {
+            const ServiceCard = () => {
+              const hoverRef = useGSAPHover();
+              
+              return (
+                <div ref={hoverRef}>
+                  <Link to={service.link}>
+                    <Card className="h-full group hover:shadow-lg transition-all duration-300 border-0 bg-card shadow-sm hover:shadow-xl cursor-pointer p-1 xs:p-2">
+                      <CardHeader className="pb-3 xs:pb-4">
+                        <div className="w-16 h-16 xs:w-18 xs:h-18 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-primary to-brand-accent rounded-lg flex items-center justify-center mb-4 xs:mb-6 group-hover:scale-110 transition-transform duration-300">
+                          <service.icon className="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 text-brand-secondary" />
+                        </div>
+                        <CardTitle className="text-lg xs:text-xl sm:text-2xl lg:text-3xl font-bold text-foreground group-hover:text-brand-primary transition-colors duration-300 mb-2">
+                          {service.title}
+                        </CardTitle>
+                        <CardDescription className="text-sm xs:text-base sm:text-lg lg:text-xl text-muted-foreground">
+                          {service.description}
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <ul className="space-y-2 xs:space-y-3">
+                          {service.features.map((feature, featureIndex) => (
+                            <li key={featureIndex} className="flex items-center text-sm xs:text-base lg:text-lg text-muted-foreground">
+                              <div className="w-2 h-2 xs:w-3 xs:h-3 bg-brand-primary rounded-full mr-3 xs:mr-4 flex-shrink-0"></div>
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                </div>
+              );
+            };
+
+            return <ServiceCard key={index} />;
+          })}
         </div>
 
         {/* Call to Action */}
