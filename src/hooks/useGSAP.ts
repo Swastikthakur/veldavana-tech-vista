@@ -146,3 +146,47 @@ export const useGSAPHover = () => {
 
   return elementRef;
 };
+
+export const useGSAPHeroParallax = (
+  imageRef: React.RefObject<HTMLElement>,
+  textRef?: React.RefObject<HTMLElement>
+) => {
+  useEffect(() => {
+    const img = imageRef?.current as HTMLElement | null;
+    const txt = textRef?.current as HTMLElement | null;
+    if (!img && !txt) return;
+
+    const ctx = gsap.context(() => {
+      if (img) {
+        gsap.to(img, {
+          yPercent: 10,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: img,
+            start: 'top top',
+            end: '+=60%',
+            scrub: true,
+          },
+        });
+      }
+      if (txt) {
+        gsap.fromTo(
+          txt,
+          { y: 24, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: txt,
+              start: 'top 85%',
+            },
+          }
+        );
+      }
+    });
+
+    return () => ctx.revert();
+  }, [imageRef, textRef]);
+};
