@@ -3,7 +3,6 @@ import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { useGSAPScrollAnimation, useGSAPHover } from '@/hooks/useGSAP';
 
 const Testimonials = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -53,12 +52,6 @@ const Testimonials = () => {
     testimonials[(currentTestimonial + 2) % testimonials.length]
   ];
 
-  const gridRef = useGSAPScrollAnimation({ 
-    animation: 'fadeInScale', 
-    duration: 0.6, 
-    stagger: 0.2 
-  });
-
   return (
     <section className="py-24 lg:py-32 bg-muted/30">
       <div className="w-full max-w-full mx-auto px-4 xs:px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
@@ -80,11 +73,9 @@ const Testimonials = () => {
         </motion.div>
 
         {/* Testimonials Grid */}
-        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xs:gap-8 sm:gap-10 lg:gap-16 mb-12 xs:mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xs:gap-8 sm:gap-10 lg:gap-16 mb-12 xs:mb-16">
           {currentTestimonials.map((testimonial, index) => {
             const TestimonialCard = () => {
-              const hoverRef = useGSAPHover();
-              
               return (
                 <div
                   key={testimonial.id}
@@ -92,7 +83,7 @@ const Testimonials = () => {
                 >
                   {testimonial.isCTA ? (
                     <a href="#contact" className="block h-full">
-                      <div ref={hoverRef}>
+                      <div>
                         <Card 
                           className="h-full border-0 bg-blue-900 shadow-lg hover:shadow-xl transition-all duration-300 p-4 xs:p-6 sm:p-8 lg:p-10 relative overflow-hidden rounded-xl hover:brightness-110 cursor-pointer"
                         >
@@ -116,7 +107,7 @@ const Testimonials = () => {
                       </div>
                     </a>
                   ) : (
-                    <div ref={hoverRef}>
+                    <div>
                       <Card className="h-full border-0 bg-card shadow-sm hover:shadow-lg transition-all duration-300 p-4 xs:p-6 sm:p-8 lg:p-10 relative overflow-hidden">
                         {/* Quote Icon */}
                         <div className="absolute top-4 right-4 xs:top-6 xs:right-6 text-brand-primary/20">

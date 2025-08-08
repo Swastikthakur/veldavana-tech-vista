@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { Code, Globe, Brain, Smartphone, Palette, Cloud } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
-import { useGSAPScrollAnimation, useGSAPHover } from '@/hooks/useGSAP';
 
 const Services = () => {
   const services = [
@@ -50,12 +49,6 @@ const Services = () => {
     }
   ];
 
-  const gridRef = useGSAPScrollAnimation({ 
-    animation: 'fadeInUp', 
-    duration: 0.6, 
-    stagger: 0.15 
-  });
-
   return (
     <section id="services" className="py-24 lg:py-32 bg-background">
       <div className="w-full max-w-full mx-auto px-4 xs:px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
@@ -74,13 +67,11 @@ const Services = () => {
           </p>
         </motion.div>
 
-        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xs:gap-8 sm:gap-10 lg:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xs:gap-8 sm:gap-10 lg:gap-12">
           {services.map((service, index) => {
             const ServiceCard = () => {
-              const hoverRef = useGSAPHover();
-              
               return (
-                <div ref={hoverRef}>
+                <div>
                   <Link to={service.link}>
                     <Card className="h-full group hover:shadow-lg transition-all duration-300 border-0 bg-card shadow-sm hover:shadow-xl cursor-pointer p-1 xs:p-2">
                       <CardHeader className="pb-3 xs:pb-4">
