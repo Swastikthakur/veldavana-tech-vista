@@ -15,6 +15,9 @@ import CloudDevOps from "./pages/services/CloudDevOps";
 import SakhiRescue from "./pages/projects/SakhiRescue";
 import ObjectDetection from "./pages/projects/ObjectDetection";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import { Suspense, lazy } from "react";
+
+const BlogDetail = lazy(() => import("./pages/blog/BlogDetail"));
 
 const queryClient = new QueryClient();
 
@@ -36,6 +39,14 @@ const App = () => (
           <Route path="/projects/sakhi-rescue" element={<SakhiRescue />} />
           <Route path="/projects/object-detection" element={<ObjectDetection />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route
+            path="/blog/:slug"
+            element={
+              <Suspense fallback={<div className="min-h-[50vh]" />}> 
+                <BlogDetail />
+              </Suspense>
+            }
+          />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

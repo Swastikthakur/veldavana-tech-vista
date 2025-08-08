@@ -7,147 +7,51 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useGSAPScrollAnimation } from '@/hooks/useGSAP';
 
 const Blog = () => {
-  const blogPosts = [
-    {
-      id: 1,
-      title: 'The Future of AI in Software Development',
-      excerpt: 'Exploring how artificial intelligence is revolutionizing the way we build software applications and the opportunities it presents.',
-      author: 'Priya Sharma',
-      date: '2024-01-15',
-      readTime: '8 min read',
-      category: 'AI/ML',
-      image: '/api/placeholder/400/250',
-      featured: true
-    },
-    {
-      id: 2,
-      title: 'Building Scalable Web Applications with React and Node.js',
-      excerpt: 'A comprehensive guide to creating performant, scalable web applications using modern JavaScript technologies.',
-      author: 'Arjun Patel',
-      date: '2024-01-10',
-      readTime: '12 min read',
-      category: 'Web Development',
-      image: '/api/placeholder/400/250',
-      featured: false
-    },
-    {
-      id: 3,
-      title: 'Cloud Migration Strategies for Modern Businesses',
-      excerpt: 'Learn about different cloud migration approaches and best practices for moving your applications to the cloud.',
-      author: 'Rajesh Kumar',
-      date: '2024-01-05',
-      readTime: '10 min read',
-      category: 'Cloud Computing',
-      image: '/api/placeholder/400/250',
-      featured: false
-    },
-    {
-      id: 4,
-      title: 'UX Design Principles for Better User Engagement',
-      excerpt: 'Essential UX design principles that can dramatically improve user engagement and conversion rates.',
-      author: 'Priya Sharma',
-      date: '2023-12-28',
-      readTime: '6 min read',
-      category: 'Design',
-      image: '/api/placeholder/400/250',
-      featured: false
-    },
-    {
-      id: 5,
-      title: 'Mobile App Development Trends in 2024',
-      excerpt: 'Discover the latest trends in mobile app development and how they can benefit your business.',
-      author: 'Arjun Patel',
-      date: '2023-12-20',
-      readTime: '9 min read',
-      category: 'Mobile Development',
-      image: '/api/placeholder/400/250',
-      featured: false
-    },
-    {
-      id: 6,
-      title: 'DevOps Best Practices for Faster Deployment',
-      excerpt: 'Implement these DevOps practices to accelerate your development workflow and improve deployment reliability.',
-      author: 'Rajesh Kumar',
-      date: '2023-12-15',
-      readTime: '11 min read',
-      category: 'DevOps',
-      image: '/api/placeholder/400/250',
-      featured: false
-    }
-  ];
+  interface BlogPost {
+    id: number;
+    slug: string;
+    title: string;
+    excerpt: string;
+    author: string;
+    date: string;
+    readTime: string;
+    category: string;
+    featured: boolean;
+    featuredImage: string;
+    contentHtml?: string;
+  }
 
-  const categories = ['All', 'AI/ML', 'Web Development', 'Cloud Computing', 'Design', 'Mobile Development', 'DevOps'];
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  const featuredPost = blogPosts.find(post => post.featured);
-  const regularPosts = blogPosts.filter(post => !post.featured);
-
-  const handleReadMore = (postId: number) => {
-    // Create a new window/tab with the blog post
-    const newWindow = window.open('', '_blank');
-    if (newWindow) {
-      const post = blogPosts.find(p => p.id === postId);
-      if (post) {
-        newWindow.document.write(`
-          <!DOCTYPE html>
-          <html lang="en">
-          <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>${post.title} - Veldavana Technologies</title>
-            <script src="https://cdn.tailwindcss.com"></script>
-            <style>
-              body { font-family: 'Inter', sans-serif; }
-              .brand-primary { color: #0B1957; }
-              .brand-secondary { color: #FDFCE8; }
-            </style>
-          </head>
-          <body class="bg-gray-50">
-            <div class="max-w-4xl mx-auto px-6 py-12">
-              <button onclick="window.close()" class="mb-8 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                ← Back to Blog
-              </button>
-              <article class="bg-white rounded-lg shadow-lg p-8">
-                <div class="mb-6">
-                  <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full mb-4">
-                    ${post.category}
-                  </span>
-                  <h1 class="text-4xl font-bold text-gray-900 mb-4">${post.title}</h1>
-                  <div class="flex items-center text-gray-600 text-sm">
-                    <span>By ${post.author}</span>
-                    <span class="mx-2">•</span>
-                    <span>${new Date(post.date).toLocaleDateString()}</span>
-                    <span class="mx-2">•</span>
-                    <span>${post.readTime}</span>
-                  </div>
-                </div>
-                <div class="prose max-w-none">
-                  <p class="text-lg text-gray-700 leading-relaxed mb-6">${post.excerpt}</p>
-                  <p class="text-gray-700 leading-relaxed mb-4">
-                    This is the full content of the blog post. In a real implementation, you would fetch the complete article content from your CMS or database.
-                  </p>
-                  <p class="text-gray-700 leading-relaxed mb-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-                  </p>
-                  <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Key Takeaways</h2>
-                  <ul class="list-disc pl-6 text-gray-700 space-y-2">
-                    <li>Important insight related to ${post.category}</li>
-                    <li>Best practices and recommendations</li>
-                    <li>Future trends and considerations</li>
-                  </ul>
-                </div>
-              </article>
-            </div>
-          </body>
-          </html>
-        `);
-        newWindow.document.close();
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const res = await fetch('/data/blogs.json');
+        const data = await res.json();
+        setPosts(data.posts || []);
+      } catch (e) {
+        console.error('Failed to load blog posts', e);
+      } finally {
+        setLoading(false);
       }
-    }
+    };
+    load();
+  }, []);
+
+  const navigate = useNavigate();
+
+  const featuredPost = posts.find(post => post.featured);
+  const regularPosts = posts.filter(post => !post.featured);
+
+  const handleReadMore = (slug: string) => {
+    navigate(`/blog/${slug}`);
   };
 
+  const gridRef = useGSAPScrollAnimation({ animation: 'fadeInUp', stagger: 0.15 });
+
   return (
-    <section className="pt-24 pb-32 bg-background">
+    <section id="blog" className="pt-24 pb-32 bg-background">
       <div className="w-full max-w-full mx-auto px-6 md:px-12 lg:px-24">
         {/* Header */}
         <motion.div 
@@ -167,20 +71,6 @@ const Blog = () => {
                 in technology and digital transformation.
               </p>
             </div>
-            <div className="hidden md:flex mt-8 md:mt-0">
-              <div className="flex gap-4 flex-wrap">
-                {categories.map(category => (
-                  <Button 
-                    key={category}
-                    variant={selectedCategory === category ? "default" : "outline"}
-                    className={selectedCategory === category ? "bg-brand-primary text-white" : "text-brand-primary"}
-                    onClick={() => setSelectedCategory(category)}
-                  >
-                    {category}
-                  </Button>
-                ))}
-              </div>
-            </div>
           </div>
         </motion.div>
 
@@ -196,10 +86,14 @@ const Blog = () => {
             <Card className="border-0 shadow-xl overflow-hidden rounded-2xl">
               <div className="lg:grid lg:grid-cols-2 lg:min-h-[500px]">
                 <div className="relative overflow-hidden">
-                  <div className="w-full h-80 lg:h-full bg-gradient-to-br from-brand-primary/20 to-brand-accent/20 flex items-center justify-center">
-                    <span className="text-brand-primary font-semibold">Featured Article Image</span>
-                  </div>
-                  <div className="absolute top-6 left-6 bg-brand-primary text-brand-secondary px-4 py-2 rounded-full text-sm font-medium">
+                  <img
+                    src={featuredPost.featuredImage}
+                    alt={`${featuredPost.title} featured image`}
+                    className="w-full h-80 lg:h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="absolute top-6 left-6 bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-medium">
                     Featured
                   </div>
                 </div>
@@ -233,7 +127,7 @@ const Blog = () => {
                     <Button 
                       variant="outline" 
                       className="border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-brand-secondary group px-6 py-2.5 text-base"
-                      onClick={() => handleReadMore(featuredPost.id)}
+                      onClick={() => handleReadMore(featuredPost.slug)}
                     >
                       Read More
                       <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -247,24 +141,19 @@ const Blog = () => {
 
         {/* Blog Posts Grid */}
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+          <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
           {regularPosts.map((post, index) => (
-            <motion.div
-              key={post.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -5 }}
-            >
+            <div key={post.id} onClick={() => handleReadMore(post.slug)} className="cursor-pointer">
               <Card className="h-full border-0 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group rounded-xl">
                 <div className="relative">
-                  <div className="w-full h-56 bg-gradient-to-br from-brand-primary/20 to-brand-accent/20 flex items-center justify-center">
-                    <span className="text-brand-primary font-semibold text-center">
-                      {post.category} Article
-                    </span>
-                  </div>
-                  <div className="absolute top-5 left-5 bg-brand-primary/90 text-brand-secondary px-3 py-1.5 rounded-full text-xs font-medium">
+                  <img
+                    src={post.featuredImage}
+                    alt={`${post.title} featured image`}
+                    className="w-full h-56 object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="absolute top-5 left-5 bg-primary/90 text-primary-foreground px-3 py-1.5 rounded-full text-xs font-medium">
                     {post.category}
                   </div>
                 </div>
@@ -298,7 +187,7 @@ const Blog = () => {
                       variant="ghost" 
                       size="sm" 
                       className="text-brand-primary hover:text-brand-secondary hover:bg-brand-primary px-3 py-1 h-auto group"
-                      onClick={() => handleReadMore(post.id)}
+                      onClick={() => handleReadMore(post.slug)}
                     >
                       Read More
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -306,7 +195,7 @@ const Blog = () => {
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           ))}
           </div>
         </div>
