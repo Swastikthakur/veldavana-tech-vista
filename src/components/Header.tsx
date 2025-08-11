@@ -21,7 +21,7 @@ const Header = () => {
   const navItems = [
     { name: 'Home', href: '#home' },
     { name: 'Services', href: '#services' },
-    { name: 'About', href: '/about', isPage: true },
+    { name: 'About', href: '#about' },
     { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -86,7 +86,7 @@ const Header = () => {
                 href={item.href}
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection(item.href, item.isPage);
+                  scrollToSection(item.href, item.href.startsWith('/'));
                 }}
                 className={`transition-all duration-300 relative group font-medium text-base lg:text-lg xl:text-xl ${
                   isScrolled 
@@ -167,7 +167,7 @@ const Header = () => {
                     transition={{ duration: 0.3, delay: 0.1 * index }}
                     onClick={(e) => {
                       e.preventDefault();
-                      scrollToSection(item.href, item.isPage);
+                      scrollToSection(item.href, item.href.startsWith('/'));
                       setIsMobileMenuOpen(false);
                     }}
                   >
