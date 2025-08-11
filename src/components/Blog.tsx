@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link, useNavigate } from 'react-router-dom';
 import { useGSAPScrollAnimation } from '@/hooks/useGSAP';
+import { useInfiniteFill } from '@/hooks/useInfiniteFill';
 
 const Blog = () => {
   interface BlogPost {
@@ -43,6 +44,7 @@ const Blog = () => {
 
   const featuredPost = posts.find(post => post.featured);
   const regularPosts = posts.filter(post => !post.featured);
+  const { visible, hasMore, sentinelRef } = useInfiniteFill(regularPosts.length, 6, 6);
 
   const handleReadMore = (slug: string) => {
     navigate(`/blog/${slug}`);
@@ -51,7 +53,7 @@ const Blog = () => {
   const gridRef = useGSAPScrollAnimation({ animation: 'fadeInUp', stagger: 0.15 });
 
   return (
-    <section id="blog" className="pt-24 pb-32 bg-background">
+    <section id="blog" className={`pt-24 ${hasMore ? 'pb-32' : 'pb-16'} bg-background`}>
       <div className="w-full max-w-full mx-auto px-6 md:px-12 lg:px-24">
         {/* Header */}
         <motion.div 
@@ -142,7 +144,7 @@ const Blog = () => {
         {/* Blog Posts Grid */}
         <div className="max-w-7xl mx-auto">
           <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-          {regularPosts.map((post, index) => (
+          {regularPosts.slice(0, visible).map((post, index) => (
             <div key={post.id} onClick={() => handleReadMore(post.slug)} className="cursor-pointer">
               <Card className="h-full border-0 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group rounded-xl">
                 <div className="relative">
@@ -197,6 +199,7 @@ const Blog = () => {
               </Card>
             </div>
           ))}
+          <div ref={sentinelRef} aria-hidden className="col-span-full h-px w-full"></div>
           </div>
         </div>
 
