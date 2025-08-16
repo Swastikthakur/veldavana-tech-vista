@@ -38,11 +38,11 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Send email to veldavnatechnologies.com
-    try {
-      // In a real implementation, you would use a service like EmailJS or a backend API
-      const emailData = {
-        to: 'info@veldavnatechnologies.com',
+      // Send email to veldavanatechnologies@gmail.com
+      try {
+        // In a real implementation, you would use a service like EmailJS or a backend API
+        const emailData = {
+          to: 'veldavanatechnologies@gmail.com',
         subject: `New Contact Form Submission from ${formData.name}`,
         body: `
           Name: ${formData.name}
@@ -93,7 +93,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email',
-      details: 'info@veldavnatechnologies.com',
+      details: 'veldavanatechnologies@gmail.com',
       subtitle: 'We respond within 24 hours'
     }
   ];

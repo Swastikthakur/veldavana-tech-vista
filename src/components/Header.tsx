@@ -119,7 +119,7 @@ const Header = () => {
                   ? 'bg-brand-primary hover:bg-brand-accent text-brand-secondary'
                   : 'bg-brand-secondary hover:bg-brand-secondary/90 text-brand-primary'
               }`}
-              onClick={() => scrollToSection('#contact')}
+              onClick={() => scrollToSection('#services')}
             >
               Get Started
             </Button>
@@ -187,7 +187,7 @@ const Header = () => {
                         : 'bg-brand-secondary hover:bg-brand-secondary/90 text-brand-primary'
                     }`}
                     onClick={() => {
-                      scrollToSection('#contact');
+                      scrollToSection('#services');
                       setIsMobileMenuOpen(false);
                     }}
                   >

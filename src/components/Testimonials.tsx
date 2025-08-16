@@ -211,6 +211,12 @@ const Testimonials = () => {
             className="bg-brand-primary text-brand-secondary px-6 xs:px-8 sm:px-10 py-4 xs:py-5 rounded-xl text-base xs:text-lg lg:text-xl font-bold hover:bg-brand-accent transition-all duration-300 hover:shadow-lg group overflow-hidden relative"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => {
+              const contactSection = document.getElementById('contact');
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
           >
             <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">
             Start Your Project
