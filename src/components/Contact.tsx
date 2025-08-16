@@ -38,42 +38,41 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-      // Send email to veldavanatechnologies@gmail.com
-      try {
-        // In a real implementation, you would use a service like EmailJS or a backend API
-        const emailData = {
-          to: 'veldavanatechnologies@gmail.com',
-        subject: `New Contact Form Submission from ${formData.name}`,
-        body: `
-          Name: ${formData.name}
-          Email: ${formData.email}
-          Phone: ${formData.phone}
-          Company: ${formData.company}
-          Service: ${formData.service}
-          Message: ${formData.message}
-        `
-      };
+    try {
+      const response = await fetch('/functions/v1/send-contact-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
       
-      // Simulate email sending
-      toast({
-        title: "Message Sent Successfully!",
-        description: "Thank you for your inquiry. We'll get back to you within 24 hours.",
-      });
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        service: '',
-        message: ''
-      });
-      setIsSubmitting(false);
-    } catch (error) {
+      const result = await response.json();
+      
+      if (response.ok) {
+        toast({
+          title: "Message Sent Successfully!",
+          description: result.message || "Thank you for your inquiry. We'll get back to you within 24 hours.",
+        });
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          service: '',
+          message: ''
+        });
+      } else {
+        throw new Error(result.error || 'Failed to send message');
+      }
+    } catch (error: any) {
+      console.error('Error sending message:', error);
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again.",
+        description: error.message || "Failed to send message. Please try again or contact us directly at veldavanatechnologies@gmail.com",
         variant: "destructive"
       });
+    } finally {
       setIsSubmitting(false);
     }
   };
@@ -126,11 +125,10 @@ const Contact = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 xs:mb-6 sm:mb-8">
-            Get In Touch
+            Contact Our Software Development Team
           </h2>
           <p className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-5xl mx-auto">
-            Ready to start your project? We'd love to hear from you. 
-            Send us a message and we'll respond as soon as possible.
+            Ready to start your custom software development project? Contact our expert team for AI solutions, mobile app development, and digital transformation consulting.
           </p>
         </motion.div>
 

@@ -77,11 +77,10 @@ const Projects = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 xs:mb-6 sm:mb-8">
-            Featured Projects
+            Software Development Portfolio & Case Studies
           </h2>
           <p className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-5xl mx-auto">
-            Explore our portfolio of successful projects that showcase our expertise in delivering 
-            innovative solutions across various industries.
+            Explore our successful software development projects showcasing AI solutions, mobile app development, and custom technology implementations across various industries.
           </p>
         </motion.div>
 
@@ -101,8 +100,8 @@ const Projects = () => {
                 <div className="w-48 h-[300px] xs:w-60 xs:h-[380px] sm:w-72 sm:h-[450px] flex items-center justify-center">
                   <img 
                     src={project.images[0]} 
-                    alt={project.title}
-                    className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-xl"
+                    alt={`${project.title} - ${project.category} mobile app development by Veldavana Technologies showcasing ${project.features[0]}`}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 drop-shadow-xl rounded-lg"
                   />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-primary/10 via-transparent to-brand-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />

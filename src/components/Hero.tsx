@@ -84,11 +84,11 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Transforming Ideas Into
+            Transform Your Business with
             <br className="hidden sm:block" />
             <span className="sm:hidden"> </span>
             <span className="bg-gradient-to-r from-brand-secondary to-brand-secondary/80 bg-clip-text text-transparent">
-              Digital Reality
+              AI-Powered Software Solutions
             </span>
           </motion.h1>
           

@@ -60,10 +60,10 @@ const Services = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 xs:mb-6 sm:mb-8">
-            Our Services
+            Custom Software Development & IT Services
           </h2>
           <p className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-5xl mx-auto">
-            We offer comprehensive technology solutions designed to accelerate your digital transformation journey.
+            Leading software development company offering AI solutions, cloud computing, mobile app development, and digital transformation services for modern businesses in 2025.
           </p>
         </motion.div>
 
