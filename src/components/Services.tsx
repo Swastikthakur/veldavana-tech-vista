@@ -71,8 +71,8 @@ const Services = () => {
           {services.map((service, index) => {
             const ServiceCard = () => {
               return (
-                <div>
-                  <Card className="h-full group hover:shadow-lg transition-all duration-300 border-0 bg-card shadow-sm hover:shadow-xl cursor-pointer p-1 xs:p-2">
+                <div className="h-full">
+                  <Card className="h-full group hover:shadow-lg transition-all duration-300 border-0 bg-card shadow-sm hover:shadow-xl cursor-pointer p-1 xs:p-2 flex flex-col">
                     <CardHeader className="pb-3 xs:pb-4">
                       <div className="w-16 h-16 xs:w-18 xs:h-18 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-primary to-brand-accent rounded-lg flex items-center justify-center mb-4 xs:mb-6 group-hover:scale-110 transition-transform duration-300">
                         <service.icon className="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 text-brand-secondary" />
@@ -84,8 +84,8 @@ const Services = () => {
                         {service.description}
                       </CardDescription>
                     </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2 xs:space-y-3 mb-6">
+                    <CardContent className="flex-1 flex flex-col">
+                      <ul className="space-y-2 xs:space-y-3 mb-6 flex-1">
                         {service.features.map((feature, featureIndex) => (
                           <li key={featureIndex} className="flex items-center text-sm xs:text-base lg:text-lg text-muted-foreground">
                             <div className="w-2 h-2 xs:w-3 xs:h-3 bg-brand-primary rounded-full mr-3 xs:mr-4 flex-shrink-0"></div>
@@ -100,7 +100,7 @@ const Services = () => {
                             contactSection.scrollIntoView({ behavior: 'smooth' });
                           }
                         }}
-                        className="w-full bg-brand-primary hover:bg-brand-accent text-brand-secondary font-bold py-3 px-4 rounded-lg transition-all duration-300 hover:shadow-lg text-sm xs:text-base"
+                        className="w-full bg-brand-primary hover:bg-brand-accent text-brand-secondary font-bold py-3 px-4 rounded-lg transition-all duration-300 hover:shadow-lg text-sm xs:text-base mt-auto"
                       >
                         Get a Quote
                       </button>
