@@ -167,8 +167,11 @@ const Header = () => {
                     transition={{ duration: 0.3, delay: 0.1 * index }}
                     onClick={(e) => {
                       e.preventDefault();
-                      scrollToSection(item.href, item.href.startsWith('/'));
                       setIsMobileMenuOpen(false);
+                      // Add small delay to ensure menu closes before scrolling
+                      setTimeout(() => {
+                        scrollToSection(item.href, item.href.startsWith('/'));
+                      }, 300);
                     }}
                   >
                     {item.name}
@@ -187,8 +190,11 @@ const Header = () => {
                         : 'bg-brand-secondary hover:bg-brand-secondary/90 text-brand-primary'
                     }`}
                     onClick={() => {
-                      scrollToSection('#services');
                       setIsMobileMenuOpen(false);
+                      // Add small delay to ensure menu closes before scrolling
+                      setTimeout(() => {
+                        scrollToSection('#services');
+                      }, 300);
                     }}
                   >
                     Get Started
