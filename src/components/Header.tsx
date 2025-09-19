@@ -88,7 +88,7 @@ const Header = () => {
                   e.preventDefault();
                   scrollToSection(item.href, item.href.startsWith('/'));
                 }}
-                className={`transition-all duration-300 relative group font-medium text-base lg:text-lg xl:text-xl ${
+                className={`transition-all duration-300 relative group font-medium text-base lg:text-lg xl:text-xl inline-block py-2 ${
                   isScrolled 
                     ? 'text-brand-primary hover:text-brand-accent' 
                     : 'text-brand-secondary hover:text-brand-secondary/80'
@@ -98,7 +98,7 @@ const Header = () => {
                 transition={{ duration: 0.5, delay: 0.1 * index }}
               >
                 {item.name}
-                <span className={`absolute bottom-0 left-0 w-0 h-1 transition-all duration-300 group-hover:w-full ${
+                <span className={`absolute bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
                   isScrolled ? 'bg-brand-primary' : 'bg-brand-secondary'
                 }`}></span>
               </motion.a>
