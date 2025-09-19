@@ -39,20 +39,29 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch('/functions/v1/send-contact-email', {
+      const formDataToSend = new FormData();
+      formDataToSend.append('access_key', '612a9710-564f-477f-9407-dab6f59013a6');
+      formDataToSend.append('name', formData.name);
+      formDataToSend.append('email', formData.email);
+      formDataToSend.append('phone', formData.phone);
+      formDataToSend.append('company', formData.company);
+      formDataToSend.append('service', formData.service);
+      formDataToSend.append('message', formData.message);
+      
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
+        body: formDataToSend,
         headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+          'Accept': 'application/json'
+        }
       });
       
       const result = await response.json();
       
-      if (response.ok) {
+      if (response.ok && result.success) {
         toast({
           title: "Message Sent Successfully!",
-          description: result.message || "Thank you for your inquiry. We'll get back to you within 24 hours.",
+          description: "Thank you for your inquiry. We'll get back to you within 24 hours.",
         });
         setFormData({
           name: '',
@@ -63,13 +72,13 @@ const Contact = () => {
           message: ''
         });
       } else {
-        throw new Error(result.error || 'Failed to send message');
+        throw new Error(result.message || 'Failed to send message');
       }
     } catch (error: any) {
       console.error('Error sending message:', error);
       toast({
         title: "Error",
-        description: error.message || "Failed to send message. Please try again or contact us directly at veldavanatechnologies@gmail.com",
+        description: "Oops! Something went wrong. Please try again or contact us directly at veldavanatechnologies@gmail.com",
         variant: "destructive"
       });
     } finally {
